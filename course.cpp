@@ -1,4 +1,5 @@
 #include "data_structures.hpp"
+#include <set>
 using namespace std;
 
 //computer representation of affine(linear) changes of variables(in polynomials)
@@ -109,56 +110,64 @@ class equal_functions {
 	int n;
 	polynom representative;
 	//function associated with its position in list of all n variable functions
-	vector<int> members;
+	set<int> members;
 public:
-	equal_functions(const polynom& p) : n(p.get_n()), representative(p) {}
-	void add_function(const polynom& p) {/*members.push_back();*/}
-	void add_function(int i) {members.push_back(i);}
-	void add_function(const vector<bool>& v) {members.push_back(vec_to_int(v));}
+	equal_functions(const polynom& p) : n(p.get_n()), representative(p) {members.insert(vec_to_int(p));}
+	void add_function(const polynom& p) {members.insert(vec_to_int(p));}
+	void add_function(int i) {members.insert(i);}
+	void add_function(const vector<bool>& v) {members.insert(vec_to_int(v));}
+	friend ostream& ::operator<<(ostream&, const equal_functions&); 
 };
+
+ostream& operator<<(ostream& out, const equal_functions& ef) {
+	for (int x : ef.members) {
+		out<<polynom(int_to_vec(x, pow(2,ef.n)),0);
+	}
+	
+	out<<endl;
+	return out;
+}
+
+vector<polynom> make_all_polynoms(int n) {
+	vector<polynom> polynoms;
+	for (int i = 0; i < pow(2,pow(2,n)); ++i) {
+		polynoms.push_back(polynom(int_to_vec(i,pow(2,n)),0));
+	}
+	return polynoms;
+}
+
+//makes all equivalence class of boolean functions of n variables, created from affine
+//change of variables vc
+vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {
+	vector<polynom> polynoms = make_all_polynoms(n);
+	
+	/*for (auto& x : vc) {
+		cout<<x<<endl;
+	}*/
+	vector<equal_functions> eq_classes;
+	set<int> used_functions;
+	int func_num;
+	for (int i = 0; i < polynoms.size(); ++i) {
+		if (used_functions.find(vec_to_int(polynoms[i])) == used_functions.end()) {
+			eq_classes.push_back(polynoms[i]);
+			for (int j = 0; j < vc.size(); ++j) {
+				func_num = vec_to_int(polynoms[i].change_variables(vc[j]));
+				eq_classes.back().add_function(func_num);
+				used_functions.insert(func_num);
+			}
+		}
+	}
+	return eq_classes;
+}
 
 int main() 
 try {
 	const int n = 2;
 	
-	vector<bool> v1{1,0,0,1,1,0,1,1}, v2{0,0,0,0,0,0,1,1}, v3{1,0,1,0,1}, \
-	v4{0,1,1,0,0}, v5{0,1,0}, v0{0,0,0,0,0};
-	
-	polynom p0, p1(v1,1), p2(v2,0), p3(v3,2), p4(v4,2), \
-	p5(vector<vector<bool>>{{0,1,1,0},{0,0,1,0},{0,0,0,1},{0,0,0,0}}), \
-	p6(vector<vector<bool>>{{1,1}, {0,1}});
-	
-	vector<polynom> polynoms;
-	for (int i = 0; i < pow(2,pow(2,n)); ++i) {
-		polynoms.push_back(polynom(int_to_vec(i,pow(2,n)),0));
-		cout<<i<<" "<<vec_to_int(polynoms.back())<<endl;
+	vector<equal_functions> eq_classes = all_eq_classes(n, make_all_changes(n));
+	for (int i = 0; i < eq_classes.size(); ++i) {
+		cout<<eq_classes[i];
 	}
-	//cout<<polynoms.size()<<endl;
-	
-	multi_affine m1(), m2(v3,1);
-	
-	affine_change a(vector<vector<bool>>{{1,1,1},{1,0,1}});
-	vector<affine_change> vc = make_all_changes(2);
-	
-		
-	//cout<<"hi\n";
-	/*for (int i = 0; i < vc.size(); ++i) {
-		cout<<p6<<vc[i]<<p6.change_variables(vc[i])<<endl;
-	}*/
-	//cout<<vc.size();
-	//espp e(p5.get_data(), 1);
-	/*(m1 += v3) += v4;
-	(e += m1) += m1;
-	e = rule1(p1, v5);*/
-	/*p5 += p5;
-	cout<<p5;*/
-	//m2 *= vector<bool>{1,0,0,0,0};
-	//m2 *= vector<bool>{0,1,0,0,0};
-	//cout<<m2<<endl;
-	//cout<<p0<<(p0 += polynom(vector<bool>{0,1,0},2));
-	//cout<<p6<<a<<p6.change_variables(a);
-	//cout<<p1.get_data()<<p1<<endl<<p2.get_data()<<p2<<endl<<(p1 * p2)<<endl;
-	//cout<<p3<<p4<<(p3 *= p4)<<p1<<p2<<p1*p2;
 } 
 catch(const char* str) {
 	cout<<str<<endl;
