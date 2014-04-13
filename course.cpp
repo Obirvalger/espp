@@ -1,5 +1,7 @@
 #include "data_structures.hpp"
 #include <set>
+#include<fstream>
+
 using namespace std;
 
 //computer representation of affine(linear) changes of variables(in polynomials)
@@ -8,8 +10,9 @@ class affine_change {
 	int num;//number of variables
 public:
 	affine_change(const vector<vector<bool>>&);
-	affine_change& add_change(vector<bool>);
+	//affine_change& add_change(vector<bool>);
 	//affine_change operator+(vector<bool>);
+	void set_negations(vector<bool>);
 	friend ostream& ::operator<<(ostream&, const affine_change&);
 	const polynom& operator[](int i) const {return data[i];}
 	polynom& operator[](int i) {return data[i];}
@@ -36,9 +39,22 @@ affine_change::affine_change(const vector<vector<bool>>& vec) {
 	}
 }
 
-/*affine_change& affine_change::add_change(vector<bool> vec) {
-	
-}*/
+void affine_change::set_negations(vector<bool> negations) {
+	if (negations.size() != num)
+		throw "Wrong number of variables in affine_change::set_negations(vector<bool>)";
+	vector<bool> one(num);
+	for (int i = 0; i < num; ++i) {
+		if (negations[i]) {
+			if (data[i].find(one) == -1) {//if there is not "1" in polynomial data[i]
+				data[i] += one;	
+			}	
+		} else {
+			if (data[i].find(one) != -1) {//if there is "1" in polynomial data[i]
+				data[i] += one;
+			}	
+		}
+	}
+}
 
 ostream& operator<<(ostream& out, const affine_change& a) {
 	for (int i = 0; i < a.data.size(); ++i) {
@@ -47,29 +63,37 @@ ostream& operator<<(ostream& out, const affine_change& a) {
 	return out;
 }
 
-vector<affine_change> make_all_changes(int n) {
+vector<affine_change> nondegenerate_linear_changes(int n) {
 	vector<affine_change> var;
 	vector<vector<bool>> vec(n,vector<bool>(n + 1));
-	//vector<bool> v(1,0);
 	unsigned long int pow_2_n = pow(2,n), number = 1;//pow_2_n;
 	for (int i = 1; i < pow_2_n; i *= 2) {
 		number *= (pow_2_n - i);
 	}
-	//cout<<number<<endl;
 	for(int i = 0; i < number; ++i) {
-		//cout<<"i = "<<i<<endl;
 		for (int j = 0; j < n; ++j) {
 			vec[j] = int_to_vec((i + j + (j * i / (pow_2_n - 1))) % (pow_2_n - 1) + 1,n + 1);
-			//cout<<vec[j];
 		}
-		var.push_back(vec);
-		//vec = vector<vector<bool>>(n,vector<bool>(n));	
+		var.push_back(vec);	
 	}
-	//cout<<'k';
 	return var;
 }
 
-//replacing and negation of variables
+vector<affine_change> make_all_changes(int n) {
+	vector<affine_change> tmp = nondegenerate_linear_changes(n), var = tmp;
+	vector<bool> negations;
+	for (int i = 1; i < pow(2,n); ++i) {
+		negations = int_to_vec(i,n);
+		for (int j = 0; j < tmp.size(); ++j) {
+			tmp[j].set_negations(negations);
+		}
+		var.insert(var.end(), tmp.begin(), tmp.end());
+	}
+		
+	return var;
+}
+
+/* //replacing and negation of variables
 vector<affine_change> make_simple_changes(int n) {
 	vector<affine_change> vec;
 	//vec.reserve(factorial(n) * pow(2,n));
@@ -84,7 +108,7 @@ vector<affine_change> make_simple_changes(int n) {
 		}		
 	}
 	return vec;
-}
+}*/
 
 polynom polynom::change_variables(const affine_change& var) const {
 	polynom p, tmp;
@@ -116,10 +140,20 @@ public:
 	void add_function(const polynom& p) {members.insert(vec_to_int(p));}
 	void add_function(int i) {members.insert(i);}
 	void add_function(const vector<bool>& v) {members.insert(vec_to_int(v));}
-	friend ostream& ::operator<<(ostream&, const equal_functions&); 
+	friend ostream& ::operator<<(ostream&, const equal_functions&);
+	friend ofstream& ::operator<<(ofstream&, const equal_functions&);
 };
 
 ostream& operator<<(ostream& out, const equal_functions& ef) {
+	for (int x : ef.members) {
+		out<<polynom(int_to_vec(x, pow(2,ef.n)),0);
+	}
+	
+	out<<endl;
+	return out;
+}
+
+ofstream& operator<<(ofstream& out, const equal_functions& ef) {
 	for (int x : ef.members) {
 		out<<polynom(int_to_vec(x, pow(2,ef.n)),0);
 	}
@@ -160,14 +194,24 @@ vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {
 	return eq_classes;
 }
 
+ofstream& operator<<(ofstream& out, const vector<equal_functions>& vec) {
+	for (int i = 0; i < vec.size(); ++i) {
+		out<<vec[i];
+	}
+	return out;
+}
+
 int main() 
 try {
 	const int n = 2;
+	ofstream out("equal_classes.txt");
 	
 	vector<equal_functions> eq_classes = all_eq_classes(n, make_all_changes(n));
 	for (int i = 0; i < eq_classes.size(); ++i) {
 		cout<<eq_classes[i];
 	}
+	
+	out<<eq_classes;
 } 
 catch(const char* str) {
 	cout<<str<<endl;

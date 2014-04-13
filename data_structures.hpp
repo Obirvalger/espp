@@ -146,7 +146,7 @@ public:
 
 //check polynomial to be zero
 bool polynom::is_zero() const{
-	if ((num == 0) || (data == vector<bool>(pow(2,num))))
+	if ((num == 0) || (data == vector<bool>(pow(2,num))) || data.empty())
 		return true;
 	return false;
 }
@@ -245,12 +245,11 @@ polynom::polynom(const vector<vector<bool>>& vec) {
 
 //find monom in poly
 int polynom::find(vector<bool> monom) const {
-		for(int i = 0; i < poly.size(); ++i) {
-			if (poly[i] == monom) {
-				return i;
-			}
-		}
-		return -1;
+		int i = vec_to_int(monom);
+		if (data[i])
+			return i;
+		else 
+			return -1;
 }
 
 //displays polynomial 
@@ -504,7 +503,7 @@ multi_affine::operator polynom() const {
 	return p;
 }
 
-//comuter representation of "exor sums of pseudo priducts" (exor sums of multiaffine functions)
+//comuter representation of "exor sums of pseudo products" (exor sums of multiaffine functions)
 class espp {
 	vector<multi_affine> data;
 public:
