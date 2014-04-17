@@ -18,7 +18,7 @@ class polynom {
 	vector<bool> data;//vector of polynomial
 	//check n to be the degree of two
 	bool make_n(unsigned int i) {
-		if ((n = log2(i)) == -1)
+		if ((n = _log2(i)) == -1)
 			throw "Size of vector is not the degree of two!";	
 	}
 public:

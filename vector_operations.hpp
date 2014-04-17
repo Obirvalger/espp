@@ -65,6 +65,16 @@ vector<bool> operator^(const vector<bool>& v1, const vector<bool>& v2) {
 	return vec;		
 }
 
+//bitwise xor of two vector<bool>
+vector<bool> operator^=(vector<bool>& v1, const vector<bool>& v2) {
+	if (v1.size() != v2.size())
+		throw "operator| vector<bool> parametrs have different size";
+	for (int i = 0; i < v1.size(); ++i) {
+		v1[i] = v1[i] ^ v2[i];
+	}
+	return v1;		
+}
+
 //calculating n!
 unsigned long int factorial(int n) {
 	int res = 1;
@@ -96,7 +106,7 @@ int vec_to_int(const vector<bool> & vec) {
 }
 
 //computes the binary logarithm of x
-int log2( unsigned int x )
+int _log2( unsigned int x )
 {
   unsigned int ans = 0, y = x;
   while( x>>=1 ) ans++;

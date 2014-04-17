@@ -43,7 +43,7 @@ polynom::polynom(const vector<bool>& vec, int type) {
 		make_n(vec.size());
 		data = vec;
 		int len = vec.size(), j;
-		for (int i = 0; i < log2(len); ++i) {
+		for (int i = 0; i < _log2(len); ++i) {
 			j = len - 1;
 			while (j > 0) {
         		for (int k = 0; k < pow(2.0,i); ++k) {
@@ -83,7 +83,7 @@ polynom::polynom(const vector<bool>& vec, int type) {
 polynom::operator vector<bool>() const{
 	vector<bool> vec = data;
 	int len = vec.size(), j;
-	for (int i = log2(len) - 1; i >= 0; --i) {
+	for (int i = _log2(len) - 1; i >= 0; --i) {
 		j = len - 1;
 		while (j > 0) {
 			for (int k = 0; k < pow(2,i); ++k) {
