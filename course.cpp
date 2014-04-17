@@ -4,9 +4,9 @@ using namespace std;
 
 int main() 
 try {
-	const int n = 3;
+	const int n = 4;
 	//polynom p = vector<vector<bool>>{{1,1}};
-	ofstream out("equal_classes.txt");
+	ofstream out("equal_classes");
 	vector<affine_change> all_changes = make_all_changes(n);
 	/*for (auto& x : all_changes)
 		cout<<x<<endl;*/

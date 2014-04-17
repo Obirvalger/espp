@@ -325,13 +325,15 @@ vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {
 			used_functions.insert(func_num);
 			for (int j = 0; j < vc.size(); ++j) {
 				func_num = vec_to_int(polynoms[i].change_variables(vc[j]));
-				eq_classes.back().add_function(func_num, j);
-				if (used_functions.find(func_num) == used_functions.end())
+				if (used_functions.find(func_num) == used_functions.end()) {
+                    eq_classes.back().add_function(func_num, j);
 					mrec<<','<<func_num<<','<<j;
+                }
 				used_functions.insert(func_num);
 				//cout<<polynoms[i]<<polynoms[i].change_variables(vc[j])<<vc[j]<<endl;
 			}
 			mrec<<';';
+            cout<<"i = "<<i<<endl;
 			//cout<<eq_classes.back();
 		}
 	}
