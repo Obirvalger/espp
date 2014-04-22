@@ -1,0 +1,129 @@
+Number of equivalence classes = 32
+
+1 class: representative is
+  0
+  there are 1 functions in this class
+
+2 class: representative is
+  x1x2x3x4
+  there are 16 functions in this class
+
+3 class: representative is
+  x1x2x3
+  there are 120 functions in this class
+
+4 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4
+  there are 560 functions in this class
+
+5 class: representative is
+  x1x2
+  there are 140 functions in this class
+
+6 class: representative is
+  x1x2x3 + x1x2x4 + x1x3x4
+  there are 1680 functions in this class
+
+7 class: representative is
+  x1x2x3x4 + x1x2 + x1x3x4
+  there are 1680 functions in this class
+
+8 class: representative is
+  x1x2x3 + x1x2 + x1x3
+  there are 840 functions in this class
+
+9 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4
+  there are 240 functions in this class
+
+10 class: representative is
+  x1
+  there are 30 functions in this class
+
+11 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x2x3x4
+  there are 2688 functions in this class
+
+12 class: representative is
+  x1x2 + x1x3x4 + x2x3x4
+  there are 6720 functions in this class
+
+13 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2 + x1x3 + x2x3x4
+  there are 6720 functions in this class
+
+14 class: representative is
+  x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4
+  there are 1920 functions in this class
+
+15 class: representative is
+  x1x2x3x4 + x1 + x2x3x4
+  there are 240 functions in this class
+
+16 class: representative is
+  x1x2 + x1x3 + x2x3
+  there are 840 functions in this class
+
+17 class: representative is
+  x1x4 + x2x3
+  there are 448 functions in this class
+
+18 class: representative is
+  x1x2x3x4 + x1x4 + x2x3
+  there are 4480 functions in this class
+
+19 class: representative is
+  x1x2x3 + x1x2x4 + x1x2 + x1x4 + x2x3
+  there are 10080 functions in this class
+
+20 class: representative is
+  x1x2x3x4 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3
+  there are 6720 functions in this class
+
+21 class: representative is
+  x1x2x3 + x1 + x2x3
+  there are 840 functions in this class
+
+22 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
+  there are 4480 functions in this class
+
+23 class: representative is
+  x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
+  there are 6720 functions in this class
+
+24 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4 + x1 + x2x3x4 + x2x3 + x2x4
+  there are 1680 functions in this class
+
+25 class: representative is
+  x1x2 + x1 + x2
+  there are 140 functions in this class
+
+26 class: representative is
+  x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
+  there are 448 functions in this class
+
+27 class: representative is
+  x1x2x3x4 + x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
+  there are 2688 functions in this class
+
+28 class: representative is
+  x1x2x3 + x1x2x4 + x1x3x4 + x1 + x2x3 + x2x4 + x3x4
+  there are 1680 functions in this class
+
+29 class: representative is
+  x1x2x3x4 + x1x2 + x1x3x4 + x1 + x2x3x4 + x2 + x3x4
+  there are 560 functions in this class
+
+30 class: representative is
+  x1x2x3 + x1x2 + x1x3 + x1 + x2x3 + x2 + x3
+  there are 120 functions in this class
+
+31 class: representative is
+  x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x1 + x2x3x4 + x2x3 + x2x4 + x2 + x3x4 + x3 + x4
+  there are 16 functions in this class
+
+32 class: representative is
+  1
+  there are 1 functions in this class

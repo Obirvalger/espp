@@ -4,6 +4,7 @@
 #include <set>
 #include <map>
 #include<fstream>
+#include<sstream>
 
 #include "vector_operations.hpp"
 #include "polynom.hpp"
@@ -12,19 +13,76 @@
 
 using namespace std;
 
+vector<vector<bool>> reverse(vector<vector<bool>> matrix) {
+	int i, j, k, l, n = matrix.size();
+	vector<bool> tmp;
+	vector<vector<bool>> reverse(n, vector<bool>(n + 1));
+	bool f;
+	
+	for (int i = 0; i < n; ++i) {
+		reverse[i][i + 1] = 1;
+		reverse[i][0] = matrix[i][0];
+	}
+	
+	for (i = 0; i < n - 1; ++i) {
+		if (!matrix[i][i + 1]) {
+			f = false;
+			for (l = i; l < n; ++l) {
+				if (matrix[l][i + 1]) {
+					tmp = matrix[l];
+					matrix[l] = matrix[i];
+					matrix[i] = tmp;
+					
+					tmp = reverse[l];
+					reverse[l] =reverse[i];
+					reverse[i] = tmp;
+					
+					f = true;
+				}
+			}
+			if (!f) 
+				throw "Reversing degenerate matrix!";
+		}
+		for (j = i + 1; j < n; ++j) {
+			if (matrix[j][i + 1]) {
+				matrix[j] ^= matrix[i];
+				reverse[j] ^= reverse[i];
+			}
+		}
+	}
+	
+	if (!matrix[n-1][n]) 
+				throw "Reversing degenerate matrix!";
+	
+	if (n == 1)
+		return reverse;
+	
+	for (i = 0; i < n - 1; ++i) {
+		for (j = n - i; j < n + 1; ++j) {
+			if (matrix[n - 2 - i][j]) {
+				reverse[n - 2 - i] ^= reverse[j - 1];
+			}
+		}	
+	} 
+	
+	return reverse;
+}
+
 //computer representation of affine(linear) changes of variables(in polynomials)
 class affine_change {
 	vector<polynom> data;
 	int n;//number of variables
 public:
 	affine_change(const vector<vector<bool>>&);
-	//affine_change& add_change(vector<bool>);
-	//affine_change operator+(vector<bool>);
+	vector<vector<bool>> get_matrix() const;
+	//return reverse change if *this is nondegenerate, else throw const char* exeption
+	affine_change reverse() const;
 	void set_negations(vector<bool>);
 	void set_order(const vector<int>&);
 	friend ostream& ::operator<<(ostream&, const affine_change&);
 	const polynom& operator[](int i) const {return data[i];}
 	polynom& operator[](int i) {return data[i];}
+	bool operator==(const affine_change& ac) const {return (data == ac.data);}
 };
 
 //vec[i] is change of xi
@@ -46,6 +104,29 @@ affine_change::affine_change(const vector<vector<bool>>& vec) {
 			v[i + 1] = 0;
 		}
 	}
+}
+
+vector<vector<bool>> affine_change::get_matrix() const {
+	vector<vector<bool>> matrix(n, vector<bool>(n + 1));
+	vector<bool> tmp;
+	unsigned int p = 1;
+	
+	for (unsigned int i = 0; i < n; ++i) {
+		tmp = data[i].get_data();
+		matrix[i][0] = tmp[0];
+		p = 1;
+		for (unsigned int j = 0; j < n; ++j) {
+			matrix[i][n - j] = tmp[p];
+			p *= 2;
+		}	
+	} 
+	
+	return matrix;
+}
+
+
+affine_change affine_change::reverse() const {
+	return ::reverse(this->get_matrix());
 }
 
 void affine_change::set_negations(vector<bool> negations) {
@@ -82,24 +163,16 @@ ostream& operator<<(ostream& out, const affine_change& a) {
 	return out;
 }
 
-vector<affine_change> make_ordered_changes(int n) {
+/*vector<affine_change> make_ordered_changes(int n) {
 	vector<affine_change> var;
 	vector<vector<bool>> vec(n,vector<bool>(n + 1));
-	/*for(int i = 0; i < n; ++i) {
-		for (int j = 0; j < pow(2,n-i-1); ++j) {
-			
-		}	
-	}*/
 	return var;
-}
+}*/
 
 bool nondegenerate(vector<vector<bool>> matrix) {
 	int i, j, k, l, n = matrix.size();
 	vector<bool> tmp;
 	bool f;
-	/*for (int y = 0; y < n; ++y) {
-		cout<<matrix[y];
-	}*/
 	for (i = 0; i < n - 1; ++i) {
 		if (!matrix[i][i + 1]) {
 			f = false;
@@ -119,9 +192,6 @@ bool nondegenerate(vector<vector<bool>> matrix) {
 				matrix[j] ^= matrix[i];
 		}
 	}
-	/*for (int y = 0; y < n; ++y) {
-		cout<<matrix[y];
-	}*/
 	return matrix[n-1][n];
 }
 
@@ -219,6 +289,7 @@ public:
 	friend ofstream& ::operator<<(ofstream&, const equal_functions&);
 	template<typename T>
 	friend void print(T&, const equal_functions&, const vector<affine_change>&);
+	friend void test(const vector<equal_functions>& vec, const vector<affine_change>& changes);
 };
 
 equal_functions::equal_functions(const polynom& p) : n(p.get_n()), representative(p) {
@@ -273,27 +344,44 @@ ofstream& operator<<(ofstream& out, const equal_functions& ef) {
 	return out;
 }
 
+void test(const vector<equal_functions>& vec, const vector<affine_change>& changes) {
+	int i = 0;
+	for (auto& y : vec) {
+		for (auto& x : y.members) {
+			if (i > 0) {
+				if ((*(y.members.begin())).first != \
+				vec_to_int(polynom(int_to_vec(x.first, pow(2,y.n)),0)\
+				.change_variables(changes[x.second].reverse()))) {
+					throw "Very bad!\n";
+				}
+			}
+			++i;
+		}
+		
+		i = 0;	
+	}
+} 
+
 template<typename T>
 void print(T& out, const equal_functions& ef, const vector<affine_change>& changes) {
 	int i = 0;
-	//cout<<ef.members.size()<<' '<<ef.changes.size()<<endl;
-	/*for (int x : ef.members) {
-		out<<i + 1<<") "<<ef.changes[i]<<" lol "<<polynom(int_to_vec(x, pow(2,ef.n)),0);
-		if (i > 0)
-			out<<changes[ef.changes[i]];
-		else
-			out<<"representative\n";
-		++i;
-	}*/
 	for (auto& x : ef.members) {
 		out<<i + 1<<") "<<polynom(int_to_vec(x.first, pow(2,ef.n)),0);
-		if (i > 0)
+		if (i > 0) {
 			out<<changes[x.second];
-		else
+			/*if ((*(ef.members.begin())).first != \
+			vec_to_int(polynom(int_to_vec(x.first, pow(2,ef.n)),0)\
+			.change_variables(changes[x.second].reverse()))) {
+				throw "Very bad!\n";
+			}*/
+		}
+		else {
 			out<<"representative\n";
+		}
 		++i;
 	}
 	
+	//out<<"Good\n";	
 	out<<endl;
 }
 
@@ -317,6 +405,7 @@ vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {
 	vector<equal_functions> eq_classes;
 	set<int> used_functions;
 	int func_num;
+	mrec<<n<<'.';
 	for (int i = 0; i < polynoms.size(); ++i) {
 		if (used_functions.find(vec_to_int(polynoms[i])) == used_functions.end()) {
 			eq_classes.push_back(polynoms[i]);
@@ -369,6 +458,97 @@ void make_stat(const vector<equal_functions>& eq) {
 	stat<<"\nsize of min class = "<<min;
 	stat<<"\nsize of max class = "<<max;
 	stat<<"\nsize of mean class = "<<float(sum) / eq.size();
+}
+
+void save_changes(const vector<affine_change>& changes, const char* str) {
+	ofstream out(str);
+	vector<vector<bool>> matrix;
+	for (auto& x : changes) {
+		matrix = x.get_matrix();
+		for (unsigned int i = 0; i < matrix.size(); ++i) {
+			for (unsigned int j = 0; j < matrix[i].size(); ++j) {
+				out<<matrix[i][j];	
+			}
+			out<<',';
+		}
+		//out<<';';
+	}
+}
+
+vector<affine_change> load_changes(const char* str) {
+	ifstream in(str);
+	char c = in.get();
+	vector<affine_change> changes;
+	vector<vector<bool>> matrix;
+	vector<bool> vec;
+	unsigned int n, i, j;
+	
+	while (in && (c != ',')) {
+		vec.push_back(c - '0');
+		c = in.get();
+	}
+	
+	matrix.push_back(vec);
+	n = vec.size() - 1;
+	i = 1;
+	c = in.get();
+	
+	while ((i < n)) {
+		while ((c != ',')) {
+			vec[j++] = (c - '0');
+			c = in.get();
+		}
+		
+		matrix.push_back(vec);
+		c = in.get();
+		++i;
+		j = 0;
+	}
+	
+	changes.push_back(matrix);
+	
+	i = 0;
+	
+	while (in) {
+		while ((i < n)) {
+			while ((c != ',')) {
+				vec[j++] = (c - '0');
+				c = in.get();
+			}
+			
+			matrix[i++] = (vec);
+			c = in.get();
+			//++i;
+			j = 0;
+		}
+		
+		i = 0;
+		changes.push_back(matrix);
+	}
+	
+	return changes;
+}
+
+vector<equal_functions> parse_file(const ifstream& file, const vector<affine_change>& vec) {
+	vector<equal_functions> eq;
+	int function, change, n;
+	char c;
+	stringstream ss;
+	ss << file.rdbuf();
+	ss>>n>>c;
+	while(ss) {
+		ss>>function>>c>>change>>c;
+		eq.push_back(polynom(int_to_vec(function,pow(2,n)),0));
+		while (c != ';') {
+			ss>>function>>c>>change>>c;
+			eq.back().add_function(function, change);
+		}
+		//print(cout, eq.back(), vec);
+	}
+	if (!eq.empty())
+		eq.pop_back();
+	
+	return eq;
 }
 
 #endif

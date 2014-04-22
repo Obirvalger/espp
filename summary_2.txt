@@ -1,0 +1,21 @@
+Number of equivalence classes = 5
+
+1 class: representative is
+  0
+  there are 1 functions in this class
+
+2 class: representative is
+  x1x2
+  there are 4 functions in this class
+
+3 class: representative is
+  x1
+  there are 6 functions in this class
+
+4 class: representative is
+  x1x2 + x1 + x2
+  there are 4 functions in this class
+
+5 class: representative is
+  1
+  there are 1 functions in this class

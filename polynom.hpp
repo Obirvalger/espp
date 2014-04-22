@@ -237,4 +237,12 @@ bool polynom::operator==(const polynom& p) const  {
 	return true;
 }
 
+vector<polynom> make_all_polynoms(int n) {
+	vector<polynom> polynoms;
+	for (int i = 0; i < pow(2,pow(2,n)); ++i) {
+		polynoms.push_back(polynom(int_to_vec(i,pow(2,n)),0));
+	}
+	return polynoms;
+}
+
 #endif
