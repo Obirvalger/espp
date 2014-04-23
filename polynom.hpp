@@ -17,6 +17,14 @@ bool polynom::is_zero() const{
 	return false;
 }
 
+unsigned int polynom::length() {
+	unsigned int res = 0;
+	for (unsigned int i = 0; i < data.size(); ++i) {
+		res += data[i];
+	}
+	return res;
+}
+
 void polynom::clear() {
 	n = 0;
 	data.clear();

@@ -31,6 +31,7 @@ public:
 	template<typename T>
 	friend void print(T&, const equal_functions&, const vector<affine_change>&);
 	friend void test(const vector<equal_functions>& vec, const vector<affine_change>& changes);
+	pair<polynom, int> shortest() const;
 };
 
 #endif

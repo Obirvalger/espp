@@ -47,8 +47,10 @@ void make_summary(const vector<equal_functions>& vec, const char* str) {
 	ofstream out(str);	
 	out<<"Number of equivalence classes = "<<vec.size()<<"\n";
 	for (unsigned int i = 0; i < vec.size(); ++i) {
-		out<<"\n"<<i + 1<<" class: representative is\n  "<<vec[i].get_representative();
+		out<<"\n"<<i + 1<<" class\n  representative:\n  "<<vec[i].get_representative();
 		out<<"  there are "<<vec[i].size()<<" functions in this class\n";
+		out<<"  shortest function:\n  "<<vec[i].shortest().first;
+		out<<"  length = "<<vec[i].shortest().first.length()<<endl;
 	}
 }
 
@@ -173,6 +175,42 @@ vector<equal_functions> parse_file(const ifstream& file, const vector<affine_cha
 		eq.pop_back();
 	
 	return eq;
+}
+
+pair<polynom, int> equal_functions::shortest() const {
+	//polynom p = polynom(int_to_vec((*(members.begin())).first, pow(2,n)),0);
+	unsigned int minl = polynom(int_to_vec((*(members.begin())).first, pow(2,n)),0).length();
+	unsigned int val = minl;
+	pair<int, int> function = (*(members.begin()));
+	
+	for (auto& x : members) {
+		val = polynom(int_to_vec(x.first, pow(2,n)),0).length();
+		if (minl > val) {
+			minl = val;
+			function = x;
+		}
+	}
+	
+	return pair<polynom, int>(polynom(int_to_vec(function.first, pow(2,n)),0), function.second);
+}
+
+vector<pair<polynom, int>> shortest(const vector<equal_functions>& eq, const vector<affine_change>& ac) {
+	vector<pair<polynom, int>> vec;
+	ofstream out("short_functions");
+	
+	for (auto& x : eq) {
+		vec.push_back(x.shortest());
+		/*cout<<x.get_representative();
+		out<<x.get_representative();
+		out<<vec.back().first;
+		if (vec.back().second != -1)
+			out<<vec.back().first.change_variables(ac[vec.back().second].reverse());
+		else
+			out<<vec.back().first;
+		out<<"\n";*/
+	}
+	
+	return vec;
 }
 
 #endif

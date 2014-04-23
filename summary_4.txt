@@ -1,129 +1,257 @@
 Number of equivalence classes = 32
 
-1 class: representative is
+1 class
+  representative:
   0
   there are 1 functions in this class
+  shortest function:
+  0
+  length = 0
 
-2 class: representative is
+2 class
+  representative:
   x1x2x3x4
   there are 16 functions in this class
+  shortest function:
+  x1x2x3x4
+  length = 1
 
-3 class: representative is
+3 class
+  representative:
   x1x2x3
   there are 120 functions in this class
+  shortest function:
+  x1x2x3
+  length = 1
 
-4 class: representative is
+4 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4
   there are 560 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2
+  length = 2
 
-5 class: representative is
+5 class
+  representative:
   x1x2
   there are 140 functions in this class
+  shortest function:
+  x1x2
+  length = 1
 
-6 class: representative is
+6 class
+  representative:
   x1x2x3 + x1x2x4 + x1x3x4
   there are 1680 functions in this class
+  shortest function:
+  x1x2 + x1x3x4
+  length = 2
 
-7 class: representative is
+7 class
+  representative:
   x1x2x3x4 + x1x2 + x1x3x4
   there are 1680 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2 + x1x3x4
+  length = 3
 
-8 class: representative is
+8 class
+  representative:
   x1x2x3 + x1x2 + x1x3
   there are 840 functions in this class
+  shortest function:
+  x1x3x4 + x1
+  length = 2
 
-9 class: representative is
+9 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4
   there are 240 functions in this class
+  shortest function:
+  x1x2x3x4 + x1
+  length = 2
 
-10 class: representative is
+10 class
+  representative:
   x1
   there are 30 functions in this class
+  shortest function:
+  x1
+  length = 1
 
-11 class: representative is
+11 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x2x3x4
   there are 2688 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2 + x1x3x4 + x2x3x4
+  length = 4
 
-12 class: representative is
+12 class
+  representative:
   x1x2 + x1x3x4 + x2x3x4
   there are 6720 functions in this class
+  shortest function:
+  x1x2 + x1x3x4 + x2x3x4
+  length = 3
 
-13 class: representative is
+13 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2 + x1x3 + x2x3x4
   there are 6720 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x3x4 + x1 + x2x3x4
+  length = 4
 
-14 class: representative is
+14 class
+  representative:
   x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4
   there are 1920 functions in this class
+  shortest function:
+  x1 + x2x3x4
+  length = 2
 
-15 class: representative is
+15 class
+  representative:
   x1x2x3x4 + x1 + x2x3x4
   there are 240 functions in this class
+  shortest function:
+  x1x2x3x4 + x1 + x2x3x4
+  length = 3
 
-16 class: representative is
+16 class
+  representative:
   x1x2 + x1x3 + x2x3
   there are 840 functions in this class
+  shortest function:
+  x1 + x2x3
+  length = 2
 
-17 class: representative is
+17 class
+  representative:
   x1x4 + x2x3
   there are 448 functions in this class
+  shortest function:
+  x1x4 + x2x3
+  length = 2
 
-18 class: representative is
+18 class
+  representative:
   x1x2x3x4 + x1x4 + x2x3
   there are 4480 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x4 + x2x3
+  length = 3
 
-19 class: representative is
+19 class
+  representative:
   x1x2x3 + x1x2x4 + x1x2 + x1x4 + x2x3
   there are 10080 functions in this class
+  shortest function:
+  x1x3x4 + x1 + x2x3
+  length = 3
 
-20 class: representative is
+20 class
+  representative:
   x1x2x3x4 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3
   there are 6720 functions in this class
+  shortest function:
+  x1x2x3x4 + x1 + x2x3
+  length = 3
 
-21 class: representative is
+21 class
+  representative:
   x1x2x3 + x1 + x2x3
   there are 840 functions in this class
+  shortest function:
+  x1x2x3 + x1 + x2x3
+  length = 3
 
-22 class: representative is
+22 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
   there are 4480 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2 + x3x4 + 1
+  length = 4
 
-23 class: representative is
+23 class
+  representative:
   x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
   there are 6720 functions in this class
+  shortest function:
+  x1x2 + x1 + x2x3x4 + x2
+  length = 4
 
-24 class: representative is
+24 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4 + x1 + x2x3x4 + x2x3 + x2x4
   there are 1680 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2 + x1 + x2
+  length = 4
 
-25 class: representative is
+25 class
+  representative:
   x1x2 + x1 + x2
   there are 140 functions in this class
+  shortest function:
+  x3x4 + 1
+  length = 2
 
-26 class: representative is
+26 class
+  representative:
   x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
   there are 448 functions in this class
+  shortest function:
+  x1x2 + x3x4 + 1
+  length = 3
 
-27 class: representative is
+27 class
+  representative:
   x1x2x3x4 + x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
   there are 2688 functions in this class
+  shortest function:
+  x1x2x3x4 + x1x2 + x1 + x2 + x3x4
+  length = 5
 
-28 class: representative is
+28 class
+  representative:
   x1x2x3 + x1x2x4 + x1x3x4 + x1 + x2x3 + x2x4 + x3x4
   there are 1680 functions in this class
+  shortest function:
+  x1x2x4 + x3x4 + 1
+  length = 3
 
-29 class: representative is
+29 class
+  representative:
   x1x2x3x4 + x1x2 + x1x3x4 + x1 + x2x3x4 + x2 + x3x4
   there are 560 functions in this class
+  shortest function:
+  x1x2x3x4 + x3x4 + 1
+  length = 3
 
-30 class: representative is
+30 class
+  representative:
   x1x2x3 + x1x2 + x1x3 + x1 + x2x3 + x2 + x3
   there are 120 functions in this class
+  shortest function:
+  x2x3x4 + 1
+  length = 2
 
-31 class: representative is
+31 class
+  representative:
   x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x1 + x2x3x4 + x2x3 + x2x4 + x2 + x3x4 + x3 + x4
   there are 16 functions in this class
+  shortest function:
+  x1x2x3x4 + 1
+  length = 2
 
-32 class: representative is
+32 class
+  representative:
   1
   there are 1 functions in this class
+  shortest function:
+  1
+  length = 1

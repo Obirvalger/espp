@@ -5,7 +5,7 @@ using namespace std;
 
 int main() 
 try {
-	const int n = 2;
+	//const int n = 2;
 	//polynom p = vector<vector<bool>>{{1,1}};
 	ofstream out("equal_classes");
 	/*vector<affine_change> all_changes = make_all_changes(n);
@@ -30,6 +30,8 @@ try {
 	test(eq,ac);
 	make_summary(eq, "summary_4.txt");
 	//print(cout, eq, ac);
+	//cout<<"begin\n\n";
+	//vector<pair<polynom, int>> shorts = shortest(eq, ac);
 	
 	/*out<<"There is ";
 	out<<eq_classes.size();

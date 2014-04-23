@@ -24,6 +24,7 @@ class polynom {
 public:
 	void make_poly();
 	bool is_zero() const;
+	unsigned int length();
 	void clear();
 	//empy polynom means zero, zero can be interpreted as polynomial with any number of variables
 	polynom() : n(0) {};
