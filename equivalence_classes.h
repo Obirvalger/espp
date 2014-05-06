@@ -10,7 +10,7 @@
 #include "vector_operations.hpp"
 #include "polynom.hpp"
 #include "multi_affine.hpp"
-#include "espp.h"
+#include "espp.hpp"
 
 using namespace std;
 
@@ -20,8 +20,9 @@ class equal_functions {
 	//second int is number of change, generated this function from representative
 	map<int, int> members;
 public:
-	equal_functions(const polynom&);
+	explicit equal_functions(const polynom&);
 	polynom get_representative() const;
+	int get_n() const {return n;} 
 	int size() const {return members.size();}
 	void add_function(const polynom&, int);
 	void add_function(int,int );

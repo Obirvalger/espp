@@ -38,6 +38,8 @@ public:
 	bool test(int i) const {return data.at(i);}
 	bool test(const vector<bool>& vec) const {return data.at(vec_to_int(vec));}
 	const vector<bool>& get_data() const {return data;}
+	const vector<vector<bool>>& get_poly() const {return poly;}
+	bool has_neg() const {return data[0];}
 	int get_n() const {return n;}
 	friend ostream& ::operator<<(ostream&, const polynom&);
 	polynom& operator+=(const polynom&);

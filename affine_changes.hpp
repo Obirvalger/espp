@@ -32,7 +32,7 @@ vector<vector<bool>> reverse(vector<vector<bool>> matrix) {
 					f = true;
 				}
 			}
-			if (!f) 
+			if (!f)
 				throw "Reversing degenerate matrix!";
 		}
 		for (j = i + 1; j < n; ++j) {

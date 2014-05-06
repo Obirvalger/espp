@@ -27,8 +27,11 @@ try {
 	/*make_stat(eq);
 	if (ac != ac1)
 		cout<<"lol\n";*/
-	test(eq,ac);
-	make_summary(eq, "summary_4.txt");
+	//print(cout, eq, ac);
+	//test(eq,ac);
+	//make_summary(eq, "summary_4.txt");
+	cout<<"start\n";
+	make_tex_table(eq, ac, "table_4");
 	//print(cout, eq, ac);
 	//cout<<"begin\n\n";
 	//vector<pair<polynom, int>> shorts = shortest(eq, ac);

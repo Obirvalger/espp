@@ -2,6 +2,7 @@
 #define EQUIVALENCE_CLASSES_HPP
 
 #include "equivalence_classes.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -43,7 +44,41 @@ ofstream& operator<<(ofstream& out, const equal_functions& ef) {
 	return out;
 }
 
-void make_summary(const vector<equal_functions>& vec, const char* str) {
+class eq_cmp {
+public:
+	bool operator()(const equal_functions& eq1, const equal_functions& eq2) const {
+		return (eq1.shortest().first.length() < eq2.shortest().first.length());
+	}
+};
+
+espp make_espp(const polynom& form, const affine_change& var) {
+	espp e;
+	multi_affine tmp(form.get_n());
+	vector<vector<bool>> poly = form.get_poly(), matrix = var.get_matrix();
+	
+	//cout<<tmp<<endl;
+	
+	for (int i = 0; i < poly.size(); ++i) {
+		for (int j = 0; j < poly[i].size(); ++j) {
+			if (poly[i][j]) {
+				tmp *= matrix[j];
+			}
+		}
+		
+		e += tmp;
+		
+		//cout<<"tmp = "<<tmp<<endl;
+		
+		tmp.set_one();
+	}
+	
+	//cout<<"e = "<<e<<"\n\n";
+		
+	return e;	
+}
+
+void make_summary(vector<equal_functions> vec, const char* str) {
+	sort(vec.begin(), vec.end(), eq_cmp());
 	ofstream out(str);	
 	out<<"Number of equivalence classes = "<<vec.size()<<"\n";
 	for (unsigned int i = 0; i < vec.size(); ++i) {
@@ -51,6 +86,26 @@ void make_summary(const vector<equal_functions>& vec, const char* str) {
 		out<<"  there are "<<vec[i].size()<<" functions in this class\n";
 		out<<"  shortest function:\n  "<<vec[i].shortest().first;
 		out<<"  length = "<<vec[i].shortest().first.length()<<endl;
+	}
+}
+
+void make_tex_table(vector<equal_functions> vec, const vector<affine_change> changes, const char* str) {
+	ofstream out(str);
+	sort(vec.begin(), vec.end(), eq_cmp());
+	for (unsigned int i = 0; i < vec.size(); ++i) {
+		out<<"\n"<<i + 1<<" & $ "<<vec[i].get_representative();
+		out<<"$ & "<<vec[i].size()<<" & "<<vec[i].shortest().first.length();
+		out<<" &\n";
+		//out<<vec[i].shortest().first;
+		if (vec[i].shortest().second != -1) {
+			//out<<changes[vec[i].shortest().second].reverse();
+			out<<"$ "<<make_espp(vec[i].shortest().first, changes[vec[i].shortest().second].reverse());
+			out<<"$\n";
+		}
+		else 
+			out<<"$ "<<vec[i].get_representative()<<"$\n";
+		out<<"& "<<(double(vec[i].shortest().first.length()) / pow(2,vec[i].get_n()));
+		out<<" \\\\ \\hline"<<endl;
 	}
 }
 
@@ -106,7 +161,7 @@ vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {
 	mrec<<n<<'.';
 	for (int i = 0; i < polynoms.size(); ++i) {
 		if (used_functions.find(vec_to_int(polynoms[i])) == used_functions.end()) {
-			eq_classes.push_back(polynoms[i]);
+			eq_classes.push_back(equal_functions(polynoms[i]));
 			func_num = vec_to_int(polynoms[i]);
 			mrec<<func_num<<','<<-1;
 			used_functions.insert(func_num);
@@ -165,7 +220,7 @@ vector<equal_functions> parse_file(const ifstream& file, const vector<affine_cha
 	ss>>n>>c;
 	while(ss) {
 		ss>>function>>c>>change>>c;
-		eq.push_back(polynom(int_to_vec(function,pow(2,n)),0));
+		eq.push_back(equal_functions(polynom(int_to_vec(function,pow(2,n)),0)));
 		while (c != ';') {
 			ss>>function>>c>>change>>c;
 			eq.back().add_function(function, change);

@@ -17,11 +17,16 @@ class multi_affine {
 public:
 	multi_affine(const vector<vector<bool>>&);
 	//one as a multiaffine function of n variables
-	multi_affine(unsigned int num) : n(num) {data.push_back(vector<bool>(1,1) + vector<bool>(n));}
+	explicit multi_affine(unsigned int num) : n(num) {data.push_back(vector<bool>(1,1) + vector<bool>(n));}
 	multi_affine(const vector<bool>&, unsigned int);
+	//make *this an one(1)
+	void set_one() {data.clear(); data.push_back(vector<bool>(1,1) + vector<bool>(n));}
+	bool is_one() const {return ((data.size() == 1) && (data[0] == (vector<bool>(1,1) + vector<bool>(n))));}
 	bool empty() const {return data.empty();}
+	int get_n() const {return n;}
 	bool operator==(const multi_affine& m) const {return data == m.data;}
-	friend ostream& ::operator<<(ostream&, const multi_affine&);
+	template<typename T>
+	friend T& ::operator<<(T&, const multi_affine&);
 	int find(vector<bool> func) const;
 	multi_affine& operator*=(vector<bool>);
 	operator polynom() const;

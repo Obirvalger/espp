@@ -49,7 +49,7 @@ multi_affine& multi_affine::operator*=(vector<bool> func) {
 	if (!(func.empty() || data.empty() || func == (vector<bool>(1,1) + vector<bool>(n)))) {
 		if (func == vector<bool>(func.size())) {
 			data.clear();
-		} else if (data.size() == 1 && data[0] == vector<bool>(1,1) + vector<bool>(n)) {
+		} else if ((data.size() == 1) && (data[0] == (vector<bool>(1,1) + vector<bool>(n)))) {
 			data[0] = func;
 		} else if (find(func) == -1) {
 			data.push_back(func);
@@ -82,7 +82,8 @@ multi_affine::multi_affine(const vector<bool>& vec,unsigned int type) {
 }
 
 //print multi_affine to out
-ostream& operator<<(ostream& out, const multi_affine& m) {
+template<typename T>
+T& operator<<(T& out, const multi_affine& m) {
 	if (m.data.empty()) {
 		out<<'0';
 		return out;
