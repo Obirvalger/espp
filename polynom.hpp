@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "polynom.h"
-#include "vector_operations.hpp"
+//#include "vector_operations.h"
 
 using namespace std;
 
@@ -236,6 +236,11 @@ polynom polynom::operator+(TYPE t) const {
 	polynom rez = *this;
 	return rez += t;
 }
+
+/*polynom polynom::operator+(const polynom& t) const {
+	polynom rez = *this;
+	return rez += t;
+}*/
 
 bool polynom::operator==(const polynom& p) const  {
 	if (is_zero() && p.is_zero())

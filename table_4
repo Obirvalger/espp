@@ -5,188 +5,188 @@ $ 0
 $
 & 0 \\ \hline
 
-2 & $ 1
+2 & $ x1x2x3x4
+$ & 16 & 1 &
+$ x1x2x3x4
+$
+& 0.0625 \\ \hline
+
+3 & $ 1
 $ & 1 & 1 &
 $ 1
 $
 & 0.0625 \\ \hline
 
-3 & $ x_1
+4 & $ x1
 $ & 30 & 1 &
-$ x_1
+$ x1
 $
 & 0.0625 \\ \hline
 
-4 & $ x_1x_2
+5 & $ x1x2
 $ & 140 & 1 &
-$ x_1x_2
+$ x1x2
 $
 & 0.0625 \\ \hline
 
-5 & $ x_1x_2x_3x_4
-$ & 16 & 1 &
-$ x_1x_2x_3x_4
-$
-& 0.0625 \\ \hline
-
-6 & $ x_1x_2x_3
+6 & $ x1x2x3
 $ & 120 & 1 &
-$ x_1x_2x_3
+$ x1x2x3
 $
 & 0.0625 \\ \hline
 
-7 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4
-$ & 560 & 2 &
-$ (x_2)(x_1) \oplus (x_2)(x_1)(x_1 \oplus x_3 \oplus x_4)(x_1 \oplus x_4)
-$
-& 0.125 \\ \hline
-
-8 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_2 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4 \oplus x_1 \oplus x_2x_3x_4 \oplus x_2x_3 \oplus x_2x_4 \oplus x_2 \oplus x_3x_4 \oplus x_3 \oplus x_4
-$ & 16 & 2 &
-$ 1 \oplus (x_3 \oplus x_4 \oplus 1)(x_2 \oplus x_4 \oplus 1)(x_1 \oplus x_4 \oplus 1)(x_4 \oplus 1)
-$
-& 0.125 \\ \hline
-
-9 & $ x_1x_2x_3 \oplus x_1x_2 \oplus x_1x_3 \oplus x_1 \oplus x_2x_3 \oplus x_2 \oplus x_3
-$ & 120 & 2 &
-$ 1 \oplus (x_2 \oplus x_3 \oplus 1)(x_1 \oplus x_3 \oplus 1)(x_3 \oplus 1)
-$
-& 0.125 \\ \hline
-
-10 & $ x_1x_2 \oplus x_1 \oplus x_2
-$ & 140 & 2 &
-$ 1 \oplus (x_1 \oplus x_2 \oplus 1)(x_2 \oplus 1)
-$
-& 0.125 \\ \hline
-
-11 & $ x_1x_4 \oplus x_2x_3
-$ & 448 & 2 &
-$ x_1x_4 \oplus x_2x_3
-$
-& 0.125 \\ \hline
-
-12 & $ x_1x_2 \oplus x_1x_3 \oplus x_2x_3
-$ & 840 & 2 &
-$ (x_1 \oplus x_3)(x_1 \oplus x_2) \oplus x_1
-$
-& 0.125 \\ \hline
-
-13 & $ x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_2 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3x_4
-$ & 1920 & 2 &
-$ (x_1 \oplus x_4)(x_1 \oplus x_3)(x_1 \oplus x_2) \oplus x_1
-$
-& 0.125 \\ \hline
-
-14 & $ x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_3x_4
+7 & $ x1x2x3 + x1x2x4 + x1x3x4
 $ & 1680 & 2 &
-$ (x_1)(x_2 \oplus x_4)(x_2 \oplus x_3) \oplus (x_1)(x_2)
+$ (x1)(x2 + x4)(x2 + x3) + (x1)(x2)
 $
 & 0.125 \\ \hline
 
-15 & $ x_1x_2x_3 \oplus x_1x_2 \oplus x_1x_3
+8 & $ x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x1 + x2x3x4 + x2x3 + x2x4 + x2 + x3x4 + x3 + x4
+$ & 16 & 2 &
+$ 1 + (x3 + x4 + 1)(x2 + x4 + 1)(x1 + x4 + 1)(x4 + 1)
+$
+& 0.125 \\ \hline
+
+9 & $ x1x2x3 + x1x2 + x1x3 + x1 + x2x3 + x2 + x3
+$ & 120 & 2 &
+$ 1 + (x2 + x3 + 1)(x1 + x3 + 1)(x3 + 1)
+$
+& 0.125 \\ \hline
+
+10 & $ x1x2 + x1 + x2
+$ & 140 & 2 &
+$ 1 + (x1 + x2 + 1)(x2 + 1)
+$
+& 0.125 \\ \hline
+
+11 & $ x1x4 + x2x3
+$ & 448 & 2 &
+$ x1x4 + x2x3
+$
+& 0.125 \\ \hline
+
+12 & $ x1x2 + x1x3 + x2x3
 $ & 840 & 2 &
-$ x_1 \oplus (x_1)(x_1 \oplus x_2 \oplus x_3)(x_1 \oplus x_3)
+$ (x1 + x3)(x1 + x2) + x1
 $
 & 0.125 \\ \hline
 
-16 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_2 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4
+13 & $ x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4
+$ & 1920 & 2 &
+$ (x1 + x4)(x1 + x3)(x1 + x2) + x1
+$
+& 0.125 \\ \hline
+
+14 & $ x1x2x3 + x1x2 + x1x3
+$ & 840 & 2 &
+$ x1 + (x1)(x1 + x2 + x3)(x1 + x3)
+$
+& 0.125 \\ \hline
+
+15 & $ x1x2x3x4 + x1x2x3 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4
 $ & 240 & 2 &
-$ x_1 \oplus (x_1)(x_1 \oplus x_3 \oplus x_4)(x_1 \oplus x_2 \oplus x_4)(x_1 \oplus x_4)
+$ x1 + (x1)(x1 + x3 + x4)(x1 + x2 + x4)(x1 + x4)
 $
 & 0.125 \\ \hline
 
-17 & $ x_1x_2x_3x_4 \oplus x_1 \oplus x_2x_3x_4
+16 & $ x1x2x3x4 + x1x2x3 + x1x2x4
+$ & 560 & 2 &
+$ (x2)(x1) + (x2)(x1)(x1 + x3 + x4)(x1 + x4)
+$
+& 0.125 \\ \hline
+
+17 & $ x1x2x3x4 + x1 + x2x3x4
 $ & 240 & 3 &
-$ x_1x_2x_3x_4 \oplus x_1 \oplus x_2x_3x_4
+$ x1x2x3x4 + x1 + x2x3x4
 $
 & 0.1875 \\ \hline
 
-18 & $ x_1x_2 \oplus x_1x_3x_4 \oplus x_2x_3x_4
-$ & 6720 & 3 &
-$ x_1x_2 \oplus x_1x_3x_4 \oplus x_2x_3x_4
-$
-& 0.1875 \\ \hline
-
-19 & $ x_1x_2x_3x_4 \oplus x_1x_4 \oplus x_2x_3
-$ & 4480 & 3 &
-$ x_1x_2x_3x_4 \oplus x_1x_4 \oplus x_2x_3
-$
-& 0.1875 \\ \hline
-
-20 & $ x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_2 \oplus x_1x_4 \oplus x_2x_3
-$ & 10080 & 3 &
-$ (x_3)(x_1 \oplus x_2) \oplus x_1 \oplus (x_1)(x_1 \oplus x_2)(x_1 \oplus x_2 \oplus x_3 \oplus x_4)
-$
-& 0.1875 \\ \hline
-
-21 & $ x_1x_2x_3x_4 \oplus x_1x_2x_4 \oplus x_1x_2 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3
-$ & 6720 & 3 &
-$ (x_1 \oplus x_3)(x_1 \oplus x_2) \oplus x_1 \oplus (x_1)(x_1 \oplus x_3)(x_1 \oplus x_2)(x_4)
-$
-& 0.1875 \\ \hline
-
-22 & $ x_1x_2x_3 \oplus x_1 \oplus x_2x_3
-$ & 840 & 3 &
-$ x_1x_2x_3 \oplus x_1 \oplus x_2x_3
-$
-& 0.1875 \\ \hline
-
-23 & $ x_1x_2x_3x_4 \oplus x_1x_2 \oplus x_1x_3x_4
+18 & $ x1x2x3x4 + x1x2 + x1x3x4
 $ & 1680 & 3 &
-$ x_1x_2x_3x_4 \oplus x_1x_2 \oplus x_1x_3x_4
+$ x1x2x3x4 + x1x2 + x1x3x4
 $
 & 0.1875 \\ \hline
 
-24 & $ x_1x_2x_3x_4 \oplus x_1x_2 \oplus x_1x_3x_4 \oplus x_1 \oplus x_2x_3x_4 \oplus x_2 \oplus x_3x_4
+19 & $ x1x2x3x4 + x1x2 + x1x3x4 + x1 + x2x3x4 + x2 + x3x4
 $ & 560 & 3 &
-$ 1 \oplus (x_1 \oplus x_2 \oplus 1)(x_2 \oplus 1) \oplus (x_4)(x_3)(x_1 \oplus x_2 \oplus 1)(x_2 \oplus 1)
+$ 1 + (x1 + x2 + 1)(x2 + 1) + (x4)(x3)(x1 + x2 + 1)(x2 + 1)
 $
 & 0.1875 \\ \hline
 
-25 & $ x_1x_2 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3 \oplus x_2x_4 \oplus x_3x_4
-$ & 448 & 3 &
-$ 1 \oplus (x_3 \oplus 1)(x_1 \oplus x_3 \oplus 1) \oplus (x_2 \oplus x_4 \oplus 1)(x_1 \oplus x_3 \oplus x_4)
-$
-& 0.1875 \\ \hline
-
-26 & $ x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_3x_4 \oplus x_1 \oplus x_2x_3 \oplus x_2x_4 \oplus x_3x_4
+20 & $ x1x2x3 + x1x2x4 + x1x3x4 + x1 + x2x3 + x2x4 + x3x4
 $ & 1680 & 3 &
-$ 1 \oplus (x_1 \oplus x_2 \oplus 1)(x_1 \oplus 1) \oplus (x_2 \oplus x_4)(x_2 \oplus x_3)(x_1 \oplus 1)
+$ 1 + (x1 + x2 + 1)(x1 + 1) + (x2 + x4)(x2 + x3)(x1 + 1)
 $
 & 0.1875 \\ \hline
 
-27 & $ x_1x_2 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3x_4 \oplus x_2x_3 \oplus x_2x_4
-$ & 6720 & 4 &
-$ x_1 \oplus x_2 \oplus (x_1 \oplus x_2)(x_1 \oplus x_2 \oplus x_3 \oplus x_4)(x_1 \oplus x_2 \oplus x_4) \oplus x_1 \oplus (x_1)(x_1 \oplus x_2)
+21 & $ x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
+$ & 448 & 3 &
+$ 1 + (x3 + 1)(x1 + x3 + 1) + (x2 + x4 + 1)(x1 + x3 + x4)
 $
-& 0.25 \\ \hline
+& 0.1875 \\ \hline
 
-28 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1 \oplus x_2x_3x_4 \oplus x_2x_3 \oplus x_2x_4
-$ & 1680 & 4 &
-$ x_2 \oplus x_1 \oplus x_2 \oplus (x_1 \oplus x_2)(x_2) \oplus (x_1 \oplus x_2)(x_2)(x_2 \oplus x_3 \oplus x_4)(x_2 \oplus x_4)
+22 & $ x1x2x3 + x1 + x2x3
+$ & 840 & 3 &
+$ x1x2x3 + x1 + x2x3
 $
-& 0.25 \\ \hline
+& 0.1875 \\ \hline
 
-29 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2 \oplus x_1x_3 \oplus x_2x_3x_4
-$ & 6720 & 4 &
-$ (x_4)(x_1 \oplus x_3)(x_1 \oplus x_2) \oplus x_1 \oplus (x_1)(x_1 \oplus x_3)(x_1 \oplus x_2) \oplus (x_1)(x_4)(x_1 \oplus x_3)(x_1 \oplus x_2)
+23 & $ x1x2x3x4 + x1x2x4 + x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3
+$ & 6720 & 3 &
+$ (x1 + x3)(x1 + x2) + x1 + (x1)(x1 + x3)(x1 + x2)(x4)
 $
-& 0.25 \\ \hline
+& 0.1875 \\ \hline
 
-30 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_3x_4 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3x_4 \oplus x_2x_3 \oplus x_2x_4
+24 & $ x1x2x3 + x1x2x4 + x1x2 + x1x4 + x2x3
+$ & 10080 & 3 &
+$ (x3)(x1 + x2) + x1 + (x1)(x1 + x2)(x1 + x2 + x3 + x4)
+$
+& 0.1875 \\ \hline
+
+25 & $ x1x2x3x4 + x1x4 + x2x3
+$ & 4480 & 3 &
+$ x1x2x3x4 + x1x4 + x2x3
+$
+& 0.1875 \\ \hline
+
+26 & $ x1x2 + x1x3x4 + x2x3x4
+$ & 6720 & 3 &
+$ x1x2 + x1x3x4 + x2x3x4
+$
+& 0.1875 \\ \hline
+
+27 & $ x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
 $ & 4480 & 4 &
-$ 1 \oplus (x_1 \oplus x_2 \oplus 1)(x_2 \oplus 1) \oplus (x_3 \oplus x_4 \oplus 1)(x_4 \oplus 1) \oplus (x_3 \oplus x_4 \oplus 1)(x_4 \oplus 1)(x_1 \oplus x_2 \oplus 1)(x_2 \oplus 1)
+$ 1 + (x1 + x2 + 1)(x2 + 1) + (x3 + x4 + 1)(x4 + 1) + (x3 + x4 + 1)(x4 + 1)(x1 + x2 + 1)(x2 + 1)
 $
 & 0.25 \\ \hline
 
-31 & $ x_1x_2x_3x_4 \oplus x_1x_2x_3 \oplus x_1x_2x_4 \oplus x_1x_3x_4 \oplus x_2x_3x_4
+28 & $ x1x2 + x1x3x4 + x1x3 + x1x4 + x2x3x4 + x2x3 + x2x4
+$ & 6720 & 4 &
+$ x1 + x2 + (x1 + x2)(x1 + x2 + x3 + x4)(x1 + x2 + x4) + x1 + (x1)(x1 + x2)
+$
+& 0.25 \\ \hline
+
+29 & $ x1x2x3x4 + x1x2x3 + x1x2x4 + x1 + x2x3x4 + x2x3 + x2x4
+$ & 1680 & 4 &
+$ x2 + x1 + x2 + (x1 + x2)(x2) + (x1 + x2)(x2)(x2 + x3 + x4)(x2 + x4)
+$
+& 0.25 \\ \hline
+
+30 & $ x1x2x3x4 + x1x2x3 + x1x2x4 + x1x3x4 + x2x3x4
 $ & 2688 & 4 &
-$ (x_1)(x_3 \oplus x_4 \oplus 1)(x_1 \oplus x_2 \oplus x_4 \oplus 1) \oplus (x_2)(x_3 \oplus x_4 \oplus 1)(x_1 \oplus x_2 \oplus x_4 \oplus 1) \oplus (x_2)(x_1) \oplus (x_2)(x_1)(x_3 \oplus x_4 \oplus 1)(x_1 \oplus x_2 \oplus x_4 \oplus 1)
+$ (x1)(x3 + x4 + 1)(x1 + x2 + x4 + 1) + (x2)(x3 + x4 + 1)(x1 + x2 + x4 + 1) + (x2)(x1) + (x2)(x1)(x3 + x4 + 1)(x1 + x2 + x4 + 1)
 $
 & 0.25 \\ \hline
 
-32 & $ x_1x_2x_3x_4 \oplus x_1x_2 \oplus x_1x_3 \oplus x_1x_4 \oplus x_2x_3 \oplus x_2x_4 \oplus x_3x_4
+31 & $ x1x2x3x4 + x1x2x3 + x1x2 + x1x3 + x2x3x4
+$ & 6720 & 4 &
+$ (x4)(x1 + x3)(x1 + x2) + x1 + (x1)(x1 + x3)(x1 + x2) + (x1)(x4)(x1 + x3)(x1 + x2)
+$
+& 0.25 \\ \hline
+
+32 & $ x1x2x3x4 + x1x2 + x1x3 + x1x4 + x2x3 + x2x4 + x3x4
 $ & 2688 & 5 &
-$ (x_1 \oplus x_2 \oplus x_4)(x_1 \oplus x_2 \oplus x_3) \oplus x_1 \oplus x_2 \oplus (x_2)(x_1) \oplus (x_2)(x_1)(x_1 \oplus x_2 \oplus x_4)(x_1 \oplus x_2 \oplus x_3)
+$ (x1 + x2 + x4)(x1 + x2 + x3) + x1 + x2 + (x2)(x1) + (x2)(x1)(x1 + x2 + x4)(x1 + x2 + x3)
 $
 & 0.3125 \\ \hline

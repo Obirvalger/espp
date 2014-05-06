@@ -235,7 +235,7 @@ vector<affine_change> load_changes(const char* str) {
 	vector<affine_change> changes;
 	vector<vector<bool>> matrix;
 	vector<bool> vec;
-	unsigned int n, i, j;
+	unsigned int n, i, j = 0;
 	
 	while (in && (c != ',')) {
 		vec.push_back(c - '0');

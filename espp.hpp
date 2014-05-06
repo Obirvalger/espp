@@ -6,11 +6,13 @@
 #include <vector>
 
 #include "espp.h"
-#include "vector_operations.hpp"
-#include "polynom.hpp"
-#include "multi_affine.hpp"
+//#include "vector_operations.hpp"
+//#include "polynom.hpp"
+//#include "multi_affine.hpp"
 
 using namespace std;
+
+bool espp::empty() {return (n == 0 || data.empty());}
 
 int espp::find(const multi_affine& m) {
 		for(int i = 0; i < data.size(); ++i) {

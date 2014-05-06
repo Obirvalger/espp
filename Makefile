@@ -1,12 +1,14 @@
-course: course.cpp course.o
-	g++ -std=c++11 course.cpp course.o -o course
-course.o: course.hpp polynom.o multi_affine.o espp.o vector_operations.o
-	g++ -std=c++11 course.hpp polynom.o multi_affine.o espp.o vector_operations.o -o course.o
+CF = -std=c++11 -x c++ -c
+
+main: main.o polynom.o multi_affine.o espp.o vector_operations.o
+	g++ -std=c++11 main.o polynom.o multi_affine.o espp.o vector_operations.o -o main
+main.o: main.cpp
+	g++ $(CF) main.cpp
 polynom.o: polynom.h polynom.hpp
-	g++ -std=c++11 polynom.h polynom.hpp -o polynom.o
+	g++ $(CF) polynom.hpp
 multi_affine.o: multi_affine.h multi_affine.hpp
-	g++ -std=c++11 multi_affine.h multi_affine.hpp -o multi_affine.o
+	g++ $(CF) multi_affine.hpp
 espp.o: espp.h espp.hpp
-	g++ -std=c++11 espp.h espp.hpp -o espp.o
-vector_operations.o: vector_operations.hpp
-	g++ -std=c++11 vector_operations.hpp -o vector_operations.o
+	g++ $(CF) espp.hpp
+vector_operations.o: vector_operations.hpp vector_operations.h
+	g++ $(CF) vector_operations.hpp

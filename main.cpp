@@ -1,8 +1,8 @@
 //#include "data_structures.hpp"
-#include "vector_operations.hpp"
-#include "polynom.hpp"
-#include "multi_affine.hpp"
-#include "espp.hpp"
+//#include "vector_operations.hpp"
+#include "polynom.h"
+#include "multi_affine.h"
+#include "espp.h"
 
 int main() 
 try {
@@ -14,9 +14,10 @@ try {
 	//cout<<"variable created\n";
 	(m1 *= v3) *= v4;
 	(e += m1) += m2;
-	cout<<"m1 = "<<m1<<"\nm2 = "<<m2<<"\ne = "<<e<<endl;
+	/*cout<<"m1 = "<<m1<<"\nm2 = "<<m2<<"\ne = "<<e<<endl;*/
 	cout<<"p0 = "<<p0<<"p1 = "<<p1<<"p2 = "<<p2<<"p3 = "<<p3<<"p4 = "<<p4<<"p6 = "<<p6<<endl;
-	cout<<"p3 *= p4 = "<<(p3 *= p4)<<"p1 * p2 = "<<p1 * p2<<"p0 + p1 + p2 = "<<p0+p1+p2;
+	cout<<"p3 *= p4 = "<<(p3 *= p4)<<"p1 * p2 = "<<p1 * p2;//<<"p0 + p1 + p2 = "<<(p0+p1+p2);
+    p1 + p1;
 } 
 catch(const char* str) {
 	cout<<str<<endl;

@@ -4,8 +4,8 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include "vector_operations.hpp"
-#include "polynom.hpp"
+#include "vector_operations.h"
+#include "polynom.h"
 
 using namespace std;
 

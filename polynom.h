@@ -5,7 +5,7 @@
 #include <cmath>
 #include <vector>
 
-#include "vector_operations.hpp"
+#include "vector_operations.h"
 
 using namespace std;
 
@@ -47,6 +47,7 @@ public:
 	polynom& operator+=(const vector<vector<bool>>&);
 	template <typename TYPE>
 	polynom operator+(TYPE) const;
+    //polynom operator+(const polynom&) const;
 	bool operator==(const polynom&) const;
 	polynom change_variables(const affine_change&) const;
 	polynom make_pj(vector<bool>) const;
