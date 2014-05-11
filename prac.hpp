@@ -76,11 +76,15 @@ vector<vector<bool>> ball1(vector<bool> alpha) {
 			vec.push_back(a);
 		}
 	}
+	
 	return vec;
 }
 
 //computes shading set of n demensional boolean cube 
 vector<vector<bool>> make_shadow(int n) {
+	if (n == 2) {
+		return vector<vector<bool>>{{0,0}, {1,1}};
+	}
 	if (n == 3) {
 		return vector<vector<bool>>{{0,0,0}, {1,1,1}};
 	}
@@ -96,6 +100,7 @@ polynom polynom::make_pj(vector<bool> alpha) const {
 	vector<vector<bool>> ball = ball1(alpha);
 	polynom p;
 	for (int i = 0; i < ball.size(); ++i) {
+		//cout<<"ball[i] = "<<ball[i]<<"\n";
 		if (data[vec_to_int(ball[i])])
 			p += ball[i];
 	}
@@ -118,6 +123,10 @@ polynom polynom::make_pj_up(vector<bool> alpha) const {
 
 //rule of conversion polynom to espp	
 espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = true) {
+	
+	if (p.is_zero())
+		return espp();
+	
 	if (p.get_n() != alpha.size())
 		throw "Number of variables are different in rule1";
 	espp e;
@@ -132,10 +141,13 @@ espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = true) 
 				vec |= (alpha ^ up[i]);
 		}
 	}
+	
 	for (int i = 0; i < vec.size(); ++i) {
 		v[i + 1] = vec[i];
 	}
+	
 	if (!with_alpha) v[0].flip();
+	
 	e += multi_affine(alpha,0) *= v;
 	return e;	
 }
@@ -148,12 +160,17 @@ espp::espp(vector<bool> vec, bool type) {
 	espp q, y_up, y_down;
 	vector<vector<bool>> t = make_shadow(p.get_n());
 	for (int j = 0; j < t.size(); ++j) {
+		
+		//cout<<"j = "<<j<<"\n";
+		
 		pj = p.make_pj(t[j]);
 		pj_up = p.make_pj_up(t[j]);	
 		if (!p.test(t[j]))
 			pj_up += t[j];
 		pj_down = pj + pj_up;
-		y_up = rule1(pj_up, t[j]);
+		cout<<"p = "<<p<<"pj = "<<pj<<"pj_up = "<<pj_up;
+		y_up = rule1(pj_up, t[j], 0);
+		cout<<"y_up = "<<y_up<<endl;
 		/*cout<<"p = "<<p<<"j = "<<j<<" t[j] = "<<t[j]<<"pj = "<<pj<<"pj_up = "<<pj_up\
 		<<"y_up = "<<y_up<<"\n\n";*/
 		

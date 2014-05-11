@@ -6,8 +6,8 @@
 #include <vector>
 
 #include "multi_affine.h"
-//#include "vector_operations.hpp"
-//#include "polynom.h"
+#include "vector_operations.hpp"
+#include "polynom.hpp"
 
 using namespace std;
 
@@ -67,6 +67,13 @@ multi_affine::multi_affine(const vector<bool>& vec,unsigned int type) {
 		if (type == 0) {
 			n = vec.size();
 			vector<bool> v(n + 1);
+			
+			if (v == vector<bool>(n)) {
+				v[0] = 1;
+				data.push_back(v);
+				return;
+			}
+				
 			for (int i = 0; i < n; ++i) {
 				if (vec[i]) {
 					v[i + 1] = 1;

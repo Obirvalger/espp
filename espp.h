@@ -5,9 +5,9 @@
 #include <cmath>
 #include <vector>
 
-#include "vector_operations.h"
-#include "polynom.h"
-#include "multi_affine.h"
+#include "vector_operations.hpp"
+#include "polynom.hpp"
+#include "multi_affine.hpp"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ class espp {
 public:
 	espp() : n(0), data() {};
 	espp (vector<bool>, bool); 
-	bool empty(); //{return (n == 0 || data.empty());}
+	bool empty() const {return (n == 0 || data.empty());}
 	template <typename T>
 	friend T& ::operator<<(T&, const espp&);
 	int find(const multi_affine&);
