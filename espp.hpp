@@ -6,9 +6,6 @@
 #include <vector>
 
 #include "espp.h"
-#include "vector_operations.hpp"
-#include "polynom.hpp"
-#include "multi_affine.hpp"
 
 using namespace std;
 
@@ -69,6 +66,11 @@ T& operator<<(T& out, const espp& e) {
 }
 
 espp& espp::operator+=(const espp& e) {
+	
+	if (e.empty()) {
+		return *this;	
+	}
+	
 	if (empty()) {
 		*this = e;
 		return *this;	
