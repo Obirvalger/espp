@@ -6,8 +6,6 @@
 #include <vector>
 
 #include "multi_affine.h"
-#include "vector_operations.hpp"
-#include "polynom.hpp"
 
 using namespace std;
 

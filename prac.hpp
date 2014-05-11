@@ -1,10 +1,10 @@
 #ifndef PRAC_HPP
 #define PRAC_HPP
 
-#include "vector_operations.hpp"
-#include "polynom.hpp"
-#include "multi_affine.hpp"
-#include "espp.hpp"
+#include "vector_operations.h"
+#include "polynom.h"
+#include "multi_affine.h"
+#include "espp.h"
 
 using namespace std;
 

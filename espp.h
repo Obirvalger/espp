@@ -5,9 +5,9 @@
 #include <cmath>
 #include <vector>
 
-#include "vector_operations.hpp"
-#include "polynom.hpp"
-#include "multi_affine.hpp"
+#include "vector_operations.h"
+#include "polynom.h"
+#include "multi_affine.h"
 
 using namespace std;
 

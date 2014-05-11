@@ -17,7 +17,7 @@ try {
 	/*cout<<"m1 = "<<m1<<"\nm2 = "<<m2<<"\ne = "<<e<<endl;*/
 	cout<<"p0 = "<<p0<<"p1 = "<<p1<<"p2 = "<<p2<<"p3 = "<<p3<<"p4 = "<<p4<<"p6 = "<<p6<<endl;
 	cout<<"p3 *= p4 = "<<(p3 *= p4)<<"p1 * p2 = "<<p1 * p2;//<<"p0 + p1 + p2 = "<<(p0+p1+p2);
-    p1 + p1;
+    //p1 + p1;
 } 
 catch(const char* str) {
 	cout<<str<<endl;

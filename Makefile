@@ -12,3 +12,7 @@ espp.o: espp.h espp.hpp
 	g++ $(CF) espp.hpp
 vector_operations.o: vector_operations.hpp vector_operations.h
 	g++ $(CF) vector_operations.hpp
+
+clean:
+	rm *.o 
+	rm main
