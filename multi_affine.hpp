@@ -61,12 +61,12 @@ multi_affine& multi_affine::operator*=(vector<bool> func) {
 multi_affine::multi_affine(const vector<bool>& vec,unsigned int type) {
 	if (type > 1)
 		throw "Bad type value in multi_affine(const vector<bool>& vec,unsigned int type)";
-	if ((vec != vector<bool>(vec.size()) && (vec.size() != 0))) {
+	if (vec.size() != 0) {
 		if (type == 0) {
 			n = vec.size();
 			vector<bool> v(n + 1);
 			
-			if (v == vector<bool>(n)) {
+			if (vec == vector<bool>(n)) {
 				v[0] = 1;
 				data.push_back(v);
 				return;
@@ -79,10 +79,12 @@ multi_affine::multi_affine(const vector<bool>& vec,unsigned int type) {
 					v = vector<bool>(n + 1);
 				}
 			}
-		} else {
+		} else if (vec != vector<bool>(vec.size())) {
 			n = vec.size() - 1;
 			data.push_back(vec);
-		}
+		} else {
+            n = 0;
+        }
 	}
 }
 

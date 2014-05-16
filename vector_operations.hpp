@@ -57,7 +57,7 @@ vector<bool> operator&(const vector<bool>& v1, const vector<bool>& v2) {
 //bitwise xor of two vector<bool>
 vector<bool> operator^(const vector<bool>& v1, const vector<bool>& v2) {
 	if (v1.size() != v2.size())
-		throw "operator| vector<bool> parametrs have different size";
+		throw "operator^ vector<bool> parametrs have different size";
 	vector<bool> vec(v1.size());
 	for (int i = 0; i < v1.size(); ++i) {
 		vec[i] = v1[i] ^ v2[i];
@@ -67,8 +67,9 @@ vector<bool> operator^(const vector<bool>& v1, const vector<bool>& v2) {
 
 //bitwise xor of two vector<bool>
 vector<bool> operator^=(vector<bool>& v1, const vector<bool>& v2) {
+    //cout<<"v1 = "<<v1<<"v2 = "<<v2;
 	if (v1.size() != v2.size())
-		throw "operator| vector<bool> parametrs have different size";
+        throw "operator^= vector<bool> parametrs have different size";
 	for (int i = 0; i < v1.size(); ++i) {
 		v1[i] = v1[i] ^ v2[i];
 	}

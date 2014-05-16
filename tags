@@ -1,0 +1,182 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AFFINE_CHANGES_H	affine_changes.h	2;"	d
+AFFINE_CHANGES_HPP	affine_changes.hpp	2;"	d
+COURSE_HPP	course.hpp	2;"	d
+EQUIVALENCE_CLASSES_H	equivalence_classes.h	2;"	d
+EQUIVALENCE_CLASSES_HPP	equivalence_classes.hpp	2;"	d
+ESPP_H	espp.h	2;"	d
+ESPP_HPP	espp.hpp	2;"	d
+MULTI_AFFINE_H	multi_affine.h	2;"	d
+MULTI_AFFINE_HPP	multi_affine.hpp	2;"	d
+POLYNOM_H	polynom.h	2;"	d
+POLYNOM_HPP	polynom.hpp	2;"	d
+PRAC_HPP	prac.hpp	2;"	d
+VECTOR_OPERATIONS_HPP	vector_operations.hpp	2;"	d
+_log2	vector_operations.hpp	/^int _log2( unsigned int x )$/;"	f
+add_function	course.hpp	/^void equal_functions::add_function(const polynom& p, int change) {$/;"	f	class:equal_functions
+add_function	course.hpp	/^void equal_functions::add_function(const vector<bool>& v, int change) {$/;"	f	class:equal_functions
+add_function	course.hpp	/^void equal_functions::add_function(int member, int change) {$/;"	f	class:equal_functions
+add_function	equivalence_classes.hpp	/^void equal_functions::add_function(const polynom& p, int change) {$/;"	f	class:equal_functions
+add_function	equivalence_classes.hpp	/^void equal_functions::add_function(const vector<bool>& v, int change) {$/;"	f	class:equal_functions
+add_function	equivalence_classes.hpp	/^void equal_functions::add_function(int member, int change) {$/;"	f	class:equal_functions
+affine_change	affine_changes.h	/^class affine_change {$/;"	c
+affine_change	affine_changes.hpp	/^affine_change::affine_change(const vector<vector<bool>>& vec) {$/;"	f	class:affine_change
+affine_change	course.hpp	/^affine_change::affine_change(const vector<vector<bool>>& vec) {$/;"	f	class:affine_change
+affine_change	course.hpp	/^class affine_change {$/;"	c
+all_eq_classes	course.hpp	/^vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {$/;"	f
+all_eq_classes	equivalence_classes.hpp	/^vector<equal_functions> all_eq_classes(int n, const vector<affine_change>& vc) {$/;"	f
+ball1	prac.hpp	/^vector<vector<bool>> ball1(vector<bool> alpha) {$/;"	f
+change_variables	affine_changes.hpp	/^polynom polynom::change_variables(const affine_change& var) const {$/;"	f	class:polynom
+change_variables	course.hpp	/^polynom polynom::change_variables(const affine_change& var) const {$/;"	f	class:polynom
+clear	polynom.hpp	/^void polynom::clear() {$/;"	f	class:polynom
+data	affine_changes.h	/^	vector<polynom> data;$/;"	m	class:affine_change
+data	course.hpp	/^	vector<polynom> data;$/;"	m	class:affine_change
+data	espp.h	/^	vector<multi_affine> data;$/;"	m	class:espp
+data	multi_affine.h	/^	vector<vector<bool>> data;\/*consists of vectors there is "1" at i position in vector if $/;"	m	class:multi_affine
+data	polynom.h	/^	vector<bool> data;\/\/vector of polynomial$/;"	m	class:polynom
+down_shadow	prac.hpp	/^vector<vector<bool>> down_shadow(vector<bool> alpha) {$/;"	f
+empty	espp.h	/^	bool empty() const {return (n == 0 || data.empty());}$/;"	f	class:espp
+empty	multi_affine.h	/^	bool empty() const {return data.empty();}$/;"	f	class:multi_affine
+empty	polynom.h	/^	bool empty() const {return data.empty();}$/;"	f	class:polynom
+eq_cmp	equivalence_classes.hpp	/^class eq_cmp {$/;"	c
+equal_functions	course.hpp	/^class equal_functions {$/;"	c
+equal_functions	course.hpp	/^equal_functions::equal_functions(const polynom& p) : n(p.get_n()), representative(p) {$/;"	f	class:equal_functions
+equal_functions	equivalence_classes.h	/^class equal_functions {$/;"	c
+equal_functions	equivalence_classes.hpp	/^equal_functions::equal_functions(const polynom& p) : n(p.get_n()) {$/;"	f	class:equal_functions
+espp	espp.h	/^	espp() : n(0), data() {};$/;"	f	class:espp
+espp	espp.h	/^class espp {$/;"	c
+espp	prac.hpp	/^espp::espp(vector<bool> vec, bool type) {$/;"	f	class:espp
+factorial	vector_operations.hpp	/^unsigned long int factorial(int n) {$/;"	f
+find	espp.hpp	/^int espp::find(const multi_affine& m) {$/;"	f	class:espp
+find	multi_affine.hpp	/^int multi_affine::find(vector<bool> func) const {$/;"	f	class:multi_affine
+find	polynom.hpp	/^int polynom::find(vector<bool> monom) const {$/;"	f	class:polynom
+get_data	polynom.h	/^	const vector<bool>& get_data() const {return data;}$/;"	f	class:polynom
+get_matrix	affine_changes.hpp	/^vector<vector<bool>> affine_change::get_matrix() const {$/;"	f	class:affine_change
+get_matrix	course.hpp	/^vector<vector<bool>> affine_change::get_matrix() const {$/;"	f	class:affine_change
+get_n	equivalence_classes.h	/^	int get_n() const {return n;} $/;"	f	class:equal_functions
+get_n	multi_affine.h	/^	int get_n() const {return n;}$/;"	f	class:multi_affine
+get_n	polynom.h	/^	int get_n() const {return n;}$/;"	f	class:polynom
+get_poly	polynom.h	/^	const vector<vector<bool>>& get_poly() const {return poly;}$/;"	f	class:polynom
+get_representative	equivalence_classes.hpp	/^polynom equal_functions::get_representative() const {$/;"	f	class:equal_functions
+has_neg	polynom.h	/^	bool has_neg() const {return data[0];}$/;"	f	class:polynom
+int_to_vec	vector_operations.hpp	/^vector<bool> int_to_vec(int x, int num) {$/;"	f
+is_one	multi_affine.h	/^	bool is_one() const {return ((data.size() == 1) && (data[0] == (vector<bool>(1,1) + vector<bool>(n))));}$/;"	f	class:multi_affine
+is_zero	polynom.hpp	/^bool polynom::is_zero() const{$/;"	f	class:polynom
+length	polynom.hpp	/^unsigned int polynom::length() {$/;"	f	class:polynom
+load_changes	affine_changes.hpp	/^vector<affine_change> load_changes(const char* str) {$/;"	f
+load_changes	course.hpp	/^vector<affine_change> load_changes(const char* str) {$/;"	f
+main	course.cpp	/^int main() $/;"	f
+main	main.cpp	/^int main() $/;"	f
+main	prac.cpp	/^int main() $/;"	f
+make_all_changes	affine_changes.hpp	/^vector<affine_change> make_all_changes(int n) {$/;"	f
+make_all_changes	course.hpp	/^vector<affine_change> make_all_changes(int n) {$/;"	f
+make_all_polynoms	course.hpp	/^vector<polynom> make_all_polynoms(int n) {$/;"	f
+make_all_polynoms	polynom.hpp	/^vector<polynom> make_all_polynoms(int n) {$/;"	f
+make_espp	equivalence_classes.hpp	/^espp make_espp(const polynom& form, const affine_change& var) {$/;"	f
+make_n	polynom.h	/^	bool make_n(unsigned int i) {$/;"	f	class:polynom
+make_pj	prac.hpp	/^polynom polynom::make_pj(vector<bool> alpha) const {$/;"	f	class:polynom
+make_pj_up	prac.hpp	/^polynom polynom::make_pj_up(vector<bool> alpha) const {$/;"	f	class:polynom
+make_poly	polynom.hpp	/^void polynom::make_poly() {$/;"	f	class:polynom
+make_shadow	prac.hpp	/^vector<vector<bool>> make_shadow(int n) {$/;"	f
+make_stat	course.hpp	/^void make_stat(const vector<equal_functions>& eq) {$/;"	f
+make_stat	equivalence_classes.hpp	/^void make_stat(const vector<equal_functions>& eq) {$/;"	f
+make_summary	equivalence_classes.hpp	/^void make_summary(vector<equal_functions> vec, const char* str) {$/;"	f
+make_tex_table	equivalence_classes.hpp	/^void make_tex_table(vector<equal_functions> vec, const vector<affine_change> changes, const char* str) {$/;"	f
+members	course.hpp	/^	map<int, int> members;$/;"	m	class:equal_functions
+members	equivalence_classes.h	/^	map<int, int> members;$/;"	m	class:equal_functions
+multi_affine	multi_affine.h	/^	explicit multi_affine(unsigned int num) : n(num) {data.push_back(vector<bool>(1,1) + vector<bool>(n));}$/;"	f	class:multi_affine
+multi_affine	multi_affine.h	/^class multi_affine {$/;"	c
+multi_affine	multi_affine.hpp	/^multi_affine::multi_affine(const vector<bool>& vec,unsigned int type) {$/;"	f	class:multi_affine
+multi_affine	multi_affine.hpp	/^multi_affine::multi_affine(const vector<vector<bool>> &vec) {$/;"	f	class:multi_affine
+n	affine_changes.h	/^	int n;\/\/number of variables$/;"	m	class:affine_change
+n	course.hpp	/^	int n;$/;"	m	class:equal_functions
+n	course.hpp	/^	int n;\/\/number of variables$/;"	m	class:affine_change
+n	equivalence_classes.h	/^	int n;$/;"	m	class:equal_functions
+n	espp.h	/^	int n;$/;"	m	class:espp
+n	multi_affine.h	/^	int n;\/\/number of variables$/;"	m	class:multi_affine
+n	polynom.h	/^	int n;\/\/number of variables$/;"	m	class:polynom
+nondegenerate	affine_changes.hpp	/^bool nondegenerate(vector<vector<bool>> matrix) {$/;"	f
+nondegenerate	course.hpp	/^bool nondegenerate(vector<vector<bool>> matrix) {$/;"	f
+nondegenerate_linear_changes	affine_changes.hpp	/^vector<affine_change> nondegenerate_linear_changes(int n) {$/;"	f
+nondegenerate_linear_changes	course.hpp	/^vector<affine_change> nondegenerate_linear_changes(int n) {$/;"	f
+operator &	vector_operations.hpp	/^vector<bool> operator&(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator ()	equivalence_classes.hpp	/^	bool operator()(const equal_functions& eq1, const equal_functions& eq2) const {$/;"	f	class:eq_cmp
+operator *	polynom.hpp	/^polynom polynom::operator*(const polynom& p) const {$/;"	f	class:polynom
+operator *=	multi_affine.hpp	/^multi_affine& multi_affine::operator*=(vector<bool> func) {$/;"	f	class:multi_affine
+operator *=	polynom.hpp	/^polynom& polynom::operator*=(const polynom& p) {$/;"	f	class:polynom
+operator +	espp.hpp	/^espp espp::operator+(const TYPE m) const{$/;"	f	class:espp
+operator +	polynom.hpp	/^polynom polynom::operator+(TYPE t) const {$/;"	f	class:polynom
+operator +	vector_operations.hpp	/^vector<bool> operator+(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator +=	espp.hpp	/^espp& espp::operator+=(const espp& e) {$/;"	f	class:espp
+operator +=	espp.hpp	/^espp& espp::operator+=(const multi_affine& m) {$/;"	f	class:espp
+operator +=	polynom.hpp	/^polynom& polynom::operator+=(const polynom& p) {$/;"	f	class:polynom
+operator +=	polynom.hpp	/^polynom& polynom::operator+=(const vector<vector<bool>>& vec) {$/;"	f	class:polynom
+operator +=	polynom.hpp	/^polynom& polynom::operator+=(vector<bool> vec) {$/;"	f	class:polynom
+operator +=	vector_operations.hpp	/^vector<bool>& operator+=(vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator <<	affine_changes.hpp	/^ostream& operator<<(ostream& out, const affine_change& a) {$/;"	f
+operator <<	course.hpp	/^ofstream& operator<<(ofstream& out, const equal_functions& ef) {$/;"	f
+operator <<	course.hpp	/^ofstream& operator<<(ofstream& out, const vector<equal_functions>& vec) {$/;"	f
+operator <<	course.hpp	/^ostream& operator<<(ostream& out, const affine_change& a) {$/;"	f
+operator <<	course.hpp	/^ostream& operator<<(ostream& out, const equal_functions& ef) {$/;"	f
+operator <<	equivalence_classes.hpp	/^ofstream& operator<<(ofstream& out, const equal_functions& ef) {$/;"	f
+operator <<	equivalence_classes.hpp	/^ofstream& operator<<(ofstream& out, const vector<equal_functions>& vec) {$/;"	f
+operator <<	equivalence_classes.hpp	/^ostream& operator<<(ostream& out, const equal_functions& ef) {$/;"	f
+operator <<	espp.hpp	/^T& operator<<(T& out, const espp& e) {$/;"	f
+operator <<	multi_affine.hpp	/^T& operator<<(T& out, const multi_affine& m) {$/;"	f
+operator <<	polynom.hpp	/^ostream& operator<<(ostream& out,const polynom& p) {$/;"	f
+operator <<	vector_operations.hpp	/^ostream& operator<<(ostream& out, const vector<bool>& pol) {$/;"	f
+operator <=	prac.hpp	/^bool operator<=(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator ==	affine_changes.h	/^	bool operator==(const affine_change& ac) const {return (data == ac.data);}$/;"	f	class:affine_change
+operator ==	course.hpp	/^	bool operator==(const affine_change& ac) const {return (data == ac.data);}$/;"	f	class:affine_change
+operator ==	multi_affine.h	/^	bool operator==(const multi_affine& m) const {return data == m.data;}$/;"	f	class:multi_affine
+operator ==	polynom.hpp	/^bool polynom::operator==(const polynom& p) const  {$/;"	f	class:polynom
+operator >=	prac.hpp	/^bool operator>=(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator []	affine_changes.h	/^	const polynom& operator[](int i) const {return data[i];}$/;"	f	class:affine_change
+operator []	affine_changes.h	/^	polynom& operator[](int i) {return data[i];}$/;"	f	class:affine_change
+operator []	course.hpp	/^	const polynom& operator[](int i) const {return data[i];}$/;"	f	class:affine_change
+operator []	course.hpp	/^	polynom& operator[](int i) {return data[i];}$/;"	f	class:affine_change
+operator ^	vector_operations.hpp	/^vector<bool> operator^(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator ^=	vector_operations.hpp	/^vector<bool> operator^=(vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator polynom	multi_affine.hpp	/^multi_affine::operator polynom() const {$/;"	f	class:multi_affine
+operator vector<bool>	polynom.hpp	/^polynom::operator vector<bool>() const{$/;"	f	class:polynom
+operator |	vector_operations.hpp	/^vector<bool> operator|(const vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+operator |=	vector_operations.hpp	/^vector<bool>& operator|=(vector<bool>& v1, const vector<bool>& v2) {$/;"	f
+parse_file	course.hpp	/^vector<equal_functions> parse_file(const ifstream& file, const vector<affine_change>& vec) {$/;"	f
+parse_file	equivalence_classes.hpp	/^vector<equal_functions> parse_file(const ifstream& file, const vector<affine_change>& vec) {$/;"	f
+poly	polynom.h	/^	vector<vector<bool>> poly;\/\/vector of monotone elementary conjunctions(monoms)$/;"	m	class:polynom
+polynom	polynom.h	/^	polynom() : n(0) {};$/;"	f	class:polynom
+polynom	polynom.h	/^class polynom {$/;"	c
+polynom	polynom.hpp	/^polynom::polynom(const vector<bool>& vec, int type) {$/;"	f	class:polynom
+polynom	polynom.hpp	/^polynom::polynom(const vector<vector<bool>>& vec) {$/;"	f	class:polynom
+print	course.hpp	/^void print(T& out, const equal_functions& ef, const vector<affine_change>& changes) {$/;"	f
+print	course.hpp	/^void print(T& out, const vector<equal_functions>& eq_functions, const vector<affine_change>& changes) {$/;"	f
+print	equivalence_classes.hpp	/^void print(T& out, const equal_functions& ef, const vector<affine_change>& changes) {$/;"	f
+print	equivalence_classes.hpp	/^void print(T& out, const vector<equal_functions>& eq_functions, const vector<affine_change>& changes) {$/;"	f
+representative	course.hpp	/^	polynom representative;$/;"	m	class:equal_functions
+reverse	affine_changes.hpp	/^affine_change affine_change::reverse() const {$/;"	f	class:affine_change
+reverse	affine_changes.hpp	/^vector<vector<bool>> reverse(vector<vector<bool>> matrix) {$/;"	f
+reverse	course.hpp	/^affine_change affine_change::reverse() const {$/;"	f	class:affine_change
+reverse	course.hpp	/^vector<vector<bool>> reverse(vector<vector<bool>> matrix) {$/;"	f
+rule1	prac.hpp	/^espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = true) {$/;"	f
+save_changes	affine_changes.hpp	/^void save_changes(const vector<affine_change>& changes, const char* str) {$/;"	f
+save_changes	course.hpp	/^void save_changes(const vector<affine_change>& changes, const char* str) {$/;"	f
+set_negations	affine_changes.hpp	/^void affine_change::set_negations(vector<bool> negations) {$/;"	f	class:affine_change
+set_negations	course.hpp	/^void affine_change::set_negations(vector<bool> negations) {$/;"	f	class:affine_change
+set_one	multi_affine.h	/^	void set_one() {data.clear(); data.push_back(vector<bool>(1,1) + vector<bool>(n));}$/;"	f	class:multi_affine
+set_order	affine_changes.hpp	/^void affine_change::set_order(const vector<int>& order) {$/;"	f	class:affine_change
+set_order	course.hpp	/^void affine_change::set_order(const vector<int>& order) {$/;"	f	class:affine_change
+shortest	equivalence_classes.hpp	/^pair<polynom, int> equal_functions::shortest() const {$/;"	f	class:equal_functions
+shortest	equivalence_classes.hpp	/^vector<pair<polynom, int>> shortest(const vector<equal_functions>& eq, const vector<affine_change>& ac) {$/;"	f
+size	course.hpp	/^	int size() const {return members.size();}$/;"	f	class:equal_functions
+size	equivalence_classes.h	/^	int size() const {return members.size();}$/;"	f	class:equal_functions
+test	course.hpp	/^void test(const vector<equal_functions>& vec, const vector<affine_change>& changes) {$/;"	f
+test	equivalence_classes.hpp	/^void test(const vector<equal_functions>& vec, const vector<affine_change>& changes) {$/;"	f
+test	polynom.h	/^	bool test(const vector<bool>& vec) const {return data.at(vec_to_int(vec));}$/;"	f	class:polynom
+test	polynom.h	/^	bool test(int i) const {return data.at(i);}$/;"	f	class:polynom
+up_shadow	prac.hpp	/^vector<vector<bool>> up_shadow(vector<bool> alpha) {$/;"	f
+vec_to_int	vector_operations.hpp	/^int vec_to_int(const vector<bool> & vec) {$/;"	f

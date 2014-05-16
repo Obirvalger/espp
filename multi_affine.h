@@ -24,12 +24,14 @@ public:
 	bool is_one() const {return ((data.size() == 1) && (data[0] == (vector<bool>(1,1) + vector<bool>(n))));}
 	bool empty() const {return data.empty();}
 	int get_n() const {return n;}
+    vector<vector<bool>> get_data() const {return data;}
 	bool operator==(const multi_affine& m) const {return data == m.data;}
 	template<typename T>
 	friend T& ::operator<<(T&, const multi_affine&);
 	int find(vector<bool> func) const;
 	multi_affine& operator*=(vector<bool>);
 	operator polynom() const;
+    bool is_affine() const {return (data.size() > 1) ? false : true;}
 };
 
 #endif

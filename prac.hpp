@@ -83,13 +83,17 @@ vector<vector<bool>> ball1(vector<bool> alpha) {
 //computes shading set of n demensional boolean cube 
 vector<vector<bool>> make_shadow(int n) {
 	if (n == 2) {
-		return vector<vector<bool>>{{0,0}, {1,1}};
+		return vector<vector<bool>>{{1,1}, {0,0}};
 	}
 	if (n == 3) {
-		return vector<vector<bool>>{{0,0,0}, {1,1,1}};
+		return vector<vector<bool>>{{1,1,1}, {0,0,0}};
 	}
 	if (n == 4) {
-		return vector<vector<bool>>{{0,0,0,0}, {1,0,0,0}, {0,1,1,1}, {1,1,1,1}};
+		return vector<vector<bool>>{{1,1,1,1}, {0,1,1,1}, {1,0,0,0}, {0,0,0,0}};
+	}
+	if (n == 5) {
+		return vector<vector<bool>>{{1,1,1,1,1}, {1,1,1,1,0}, {1,1,1,0,1}, {0,0,0,1,1}, \
+        {1,0,0,0,0}, {0,1,0,0,0}, {0,0,1,0,0}};
 	}
 	//else ...	
 }
@@ -122,7 +126,7 @@ polynom polynom::make_pj_up(vector<bool> alpha) const {
 }
 
 //rule of conversion polynom to espp	
-espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = true) {
+espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = false) {
 	
 	if (p.is_zero())
 		return espp();
@@ -148,16 +152,48 @@ espp rule1(const polynom& p, const vector<bool>& alpha, bool with_alpha = true) 
 	
 	if (!with_alpha) v[0].flip();
 	
+    //cout<<"alpha = "<<alpha<<"Xa = "<<multi_affine(alpha,0)<<"\n";
 	e += multi_affine(alpha,0) *= v;
 	return e;	
 }
 
-//later will be implement rule2, maybe it returns pair(espp,polynom)
+pair<multi_affine, polynom> rule2(const polynom& p, const vector<bool>& alpha, bool with_alpha = false) {
+	
+	/*if (p.is_zero())
+		return espp();*/
+	
+	if (p.get_n() != alpha.size())
+		throw "Number of variables are different in rule2";
+	multi_affine m(alpha.size());
+
+	vector<vector<bool>> down = down_shadow(alpha);
+	if (with_alpha) down.push_back(alpha);
+	vector<bool> vec(alpha.size()), v(alpha.size() + 1);
+    
+	for (int i = 0; i < down.size(); ++i) {
+        v[0] = p.test(down[i]);
+        vec = (alpha ^ down[i]);
+        for (int i = 0; i < vec.size(); ++i) {
+            v[i + 1] = vec[i];
+        }
+        //cout<<"v = "<<v;
+        m *= v;
+        //cout<<"m = "<<m<<endl;
+        v ^= v;
+	}
+	
+	if (!with_alpha) v[0].flip();
+	
+    //cout<<"m = "<<m<<"\npm = "<<polynom(m)<<"\n";
+	//e += multi_affine(alpha,0) *= v;
+	return pair<multi_affine, polynom>(m, p + polynom(m));	
+}
 
 //main algorithm 
 espp::espp(vector<bool> vec, bool type) {
 	polynom p(vec, type), pj, pj_up, pj_down, p_rest;
 	espp q, y_up, y_down;
+    pair<espp,polynom> r2;
 	vector<vector<bool>> t = make_shadow(p.get_n());
 	for (int j = 0; j < t.size(); ++j) {
 		
@@ -168,15 +204,27 @@ espp::espp(vector<bool> vec, bool type) {
 		if (!p.test(t[j]))
 			pj_up += t[j];
 		pj_down = pj + pj_up;
-		cout<<"p = "<<p<<"pj = "<<pj<<"pj_up = "<<pj_up;
+
 		y_up = rule1(pj_up, t[j], 0);
-		cout<<"y_up = "<<y_up<<endl;
+		r2 = rule2(pj_down, t[j], 0);
+        y_down = r2.first;
+        p_rest = r2.second;
+		//cout<<"p = "<<p<<"pj = "<<pj<<"pj_up = "<<pj_up<<"p_rest = "<<p_rest<<\
+        "y_up = "<<y_up<<"y_down = "<<y_down;
+        p = p + pj + p_rest;
+        q = q + y_up + y_down;
+        //cout<<"q = "<<q;
+
+        if (p.is_zero()) break;
+
+
+        //cout<<"y_up = "<<y_up<<endl;
 		/*cout<<"p = "<<p<<"j = "<<j<<" t[j] = "<<t[j]<<"pj = "<<pj<<"pj_up = "<<pj_up\
 		<<"y_up = "<<y_up<<"\n\n";*/
 		
 		//using rule2, it gives us y_down and p_rest
-		p += (pj + p_rest);
-		q += (y_up + y_down);
 	}
+    *this = q;
+    //n = (vec == vector<bool>(vec.size())) ? 0 : _log2(vec.size());
 }
 #endif

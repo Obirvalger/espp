@@ -18,6 +18,7 @@ class espp {
 public:
 	espp() : n(0), data() {};
 	espp (vector<bool>, bool); 
+    espp (const multi_affine&);
 	bool empty() const {return (n == 0 || data.empty());}
 	template <typename T>
 	friend T& ::operator<<(T&, const espp&);
@@ -26,6 +27,7 @@ public:
 	espp& operator+=(const espp&);
 	template <typename TYPE>
 	espp operator+(const TYPE m) const;
+	operator polynom() const;
 };
 
 #endif
